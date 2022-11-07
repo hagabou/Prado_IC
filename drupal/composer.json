@@ -16,73 +16,91 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "dompdf/dompdf": " 0.8.5",
+        "drupal/access_by_entity": "^1.2",
+        "drupal/access_filter": "^1.3",
+        "drupal/address": "^1.9",
+        "drupal/basic": "^2.0",
+        "drupal/block_user_info": "^2.1",
+        "drupal/cas_server": "^1.0@beta",
+        "drupal/ccos": "^2.0",
+        "drupal/chosen": "^2.9",
+        "drupal/content_access": "^1.0@alpha",
+        "drupal/content_lock": "^2.2",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/core-vendor-hardening": "^9.4"
+        "drupal/devel": "^2.1",
+        "drupal/devel_php": "^1.1",
+        "drupal/easy_breadcrumb": "^1.15",
+        "drupal/editor_file": "^1.5",
+        "drupal/entity_print": "^2.2",
+        "drupal/entity_reference_layout": "^1.0@alpha",
+        "drupal/entity_update": "^2.0@RC",
+        "drupal/entity_usage": "^2.0@beta",
+        "drupal/entitygroupfield": "^1.0@alpha",
+        "drupal/erl_paragraphs": "^1.0@alpha",
+        "drupal/flexslider": "^2.0@beta",
+        "drupal/freelancer_zymphonies_theme": "^1.1",
+        "drupal/genpass": "^1.1",
+        "drupal/group": "^1.3",
+        "drupal/linkit": "^4.3",
+        "drupal/masquerade": "^2.0@beta",
+        "drupal/menu_force": "^1.2",
+        "drupal/oauth2_server": "^1.0@beta",
+        "drupal/paragraphs": "^1.11",
+        "drupal/pathauto": "^1.8",
+        "drupal/permissions_by_term": "^2.18",
+        "drupal/redirect": "^1.6",
+        "drupal/scanner": "^1.0@RC",
+        "drupal/simplify": "^1.2",
+        "drupal/smtp": "^1.0",
+        "drupal/views_field_view": "^1.0@beta",
+        "drupal/webform": "^5.9",
+        "drupal/webform_xlsx_export": "^1.0",
+        "drupal/xls_serialization": "^1.2",
+        "drush/drush": "^10.2",
+        "nyholm/psr7": "^1.2",
+        "php-http/curl-client": "^2.1",
+        "php-http/message": "^1.8",
+        "phpoffice/phpspreadsheet": "^1.17",
+        "pnz/mattermost-client": "^0.1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "allow-plugins": {
-            "composer/installers": true,
-            "drupal/core-composer-scaffold": true,
-            "drupal/core-project-message": true,
-            "drupal/core-vendor-hardening": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        },
         "sort-packages": true
     },
     "extra": {
         "drupal-scaffold": {
             "locations": {
-                "web-root": "./"
+                "web-root": "web/"
             }
         },
         "installer-paths": {
-            "core": [
-                "type:drupal-core"
-            ],
-            "libraries/{$name}": [
-                "type:drupal-library"
-            ],
-            "modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "profiles/contrib/{$name}": [
-                "type:drupal-profile"
-            ],
-            "themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "modules/custom/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "profiles/custom/{$name}": [
-                "type:drupal-custom-profile"
-            ],
-            "themes/custom/{$name}": [
-                "type:drupal-custom-theme"
-            ]
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
         "drupal-core-project-message": {
-            "include-keys": [
-                "homepage",
-                "support"
-            ],
+            "include-keys": ["homepage", "support"],
             "post-create-project-cmd-message": [
                 "<bg=blue;fg=white>                                                         </>",
                 "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
-                "<bg=blue;fg=white>  from the drupal/legacy-project template!               </>",
+                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
                 "<bg=blue;fg=white>                                                         </>",
                 "",
                 "<bg=yellow;fg=black>Next steps</>:",
+
                 "  * Install the site: https://www.drupal.org/docs/8/install",
                 "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
                 "  * Get support: https://www.drupal.org/support",
