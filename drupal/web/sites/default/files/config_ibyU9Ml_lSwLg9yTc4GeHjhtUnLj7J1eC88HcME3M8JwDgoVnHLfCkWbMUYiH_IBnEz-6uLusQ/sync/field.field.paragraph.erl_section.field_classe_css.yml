@@ -1,0 +1,21 @@
+uuid: beac422a-c3ce-48b8-824c-a1e1b2a37c8e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_classe_css
+    - paragraphs.paragraphs_type.erl_section
+_core:
+  default_config_hash: _akZ9gFOzxzLaHKuvRjblvZhQjm9F4ZsD0C_fhled8k
+id: paragraph.erl_section.field_classe_css
+field_name: field_classe_css
+entity_type: paragraph
+bundle: erl_section
+label: 'Classe CSS'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

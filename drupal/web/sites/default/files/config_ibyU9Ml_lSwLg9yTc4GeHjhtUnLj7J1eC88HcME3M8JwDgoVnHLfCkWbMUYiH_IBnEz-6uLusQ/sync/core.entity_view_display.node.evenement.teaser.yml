@@ -1,0 +1,50 @@
+uuid: 61bf5d6c-e16e-4ba7-a744-0d234eeb91af
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.evenement.body
+    - field.field.node.evenement.field_affichage
+    - field.field.node.evenement.field_catego
+    - field.field.node.evenement.field_date
+    - field.field.node.evenement.field_image
+    - field.field.node.evenement.field_lien
+    - field.field.node.evenement.field_nom_du_lien
+    - field.field.node.evenement.field_webinaire_en_lien
+    - node.type.evenement
+  module:
+    - datetime
+    - text
+    - user
+id: node.evenement.teaser
+targetEntityType: node
+bundle: evenement
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 1
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  field_date:
+    type: datetime_default
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+hidden:
+  field_affichage: true
+  field_catego: true
+  field_image: true
+  field_lien: true
+  field_nom_du_lien: true
+  field_webinaire_en_lien: true
+  langcode: true
+  links: true

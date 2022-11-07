@@ -1,0 +1,50 @@
+uuid: a09c2097-8aa2-4228-a0d3-9e2a1af5a873
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.departements.field_code
+    - field.field.taxonomy_term.departements.field_texte_groupes_familles
+    - field.field.taxonomy_term.departements.field_texte_groupes_virtuels
+    - taxonomy.vocabulary.departements
+  module:
+    - text
+id: taxonomy_term.departements.default
+targetEntityType: taxonomy_term
+bundle: departements
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_code:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_texte_groupes_familles:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_texte_groupes_virtuels:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true

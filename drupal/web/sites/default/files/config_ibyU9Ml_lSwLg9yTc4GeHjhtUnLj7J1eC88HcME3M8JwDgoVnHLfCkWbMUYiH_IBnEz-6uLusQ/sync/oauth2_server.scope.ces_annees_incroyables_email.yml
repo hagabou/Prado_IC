@@ -1,0 +1,8 @@
+uuid: c8de965c-6307-48e9-889f-8c1673bab52c
+langcode: en
+status: true
+dependencies: {  }
+id: ces_annees_incroyables_email
+scope_id: email
+server_id: ces_annees_incroyables
+description: 'View your email address.'

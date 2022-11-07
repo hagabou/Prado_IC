@@ -1,0 +1,78 @@
+uuid: c0021e01-92f3-4504-ac26-7026280c73fe
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lignes
+    - node.type.page
+    - paragraphs.paragraphs_type.bloc_colore
+    - paragraphs.paragraphs_type.bloc_drupal
+    - paragraphs.paragraphs_type.erl_section
+    - paragraphs.paragraphs_type.formulaire
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.ligne
+  module:
+    - entity_reference_layout
+_core:
+  default_config_hash: _u1eLAqSm0zhmDuF6W8gLyMWnPkZKtUkXZEw2EaSDNw
+id: node.page.field_lignes
+field_name: field_lignes
+entity_type: node
+bundle: page
+label: Lignes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: '0'
+    target_bundles:
+      erl_section: erl_section
+      bloc_colore: bloc_colore
+      from_library: from_library
+      ligne: ligne
+      formulaire: formulaire
+      bloc_drupal: bloc_drupal
+      image: image
+    target_bundles_drag_drop:
+      erl_section:
+        enabled: '1'
+        weight: '4'
+      bloc_colore:
+        enabled: '1'
+        weight: '5'
+      from_library:
+        enabled: '1'
+        weight: '5'
+      ligne:
+        enabled: '1'
+        weight: '6'
+      formulaire:
+        enabled: '1'
+        weight: '7'
+      bloc_drupal:
+        enabled: '1'
+        weight: '8'
+      image:
+        enabled: '1'
+        weight: '9'
+    layout_bundles:
+      - erl_section
+    allowed_layouts:
+      'Columns: 1':
+        layout_onecol: 'One column'
+      'Columns: 2':
+        layout_twocol: 'Two column'
+        layout_twocol_section: 'Two column'
+        layout_twocol_bricks: 'Two column bricks'
+      'Columns: 3':
+        layout_threecol_section: 'Three column'
+        layout_threecol_25_50_25: 'Three column 25/50/25'
+        layout_threecol_33_34_33: 'Three column 33/34/33'
+      'Columns: 4':
+        layout_fourcol_section: 'Four column'
+field_type: entity_reference_layout_revisioned

@@ -1,0 +1,12 @@
+uuid: bdbee49a-fb48-4bc3-8552-aa987c7825ab
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: JkpFsqog-EYmQZvdovYFxVtv-702pbvwPEhuJBGzKsY
+id: block_content.token
+label: 'Jeton (token)'
+targetEntityType: block_content
+cache: true

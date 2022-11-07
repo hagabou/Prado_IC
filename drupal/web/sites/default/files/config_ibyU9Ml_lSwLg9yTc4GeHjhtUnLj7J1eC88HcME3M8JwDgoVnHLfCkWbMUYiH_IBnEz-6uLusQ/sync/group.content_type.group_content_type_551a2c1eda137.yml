@@ -1,0 +1,17 @@
+uuid: dd6db888-10cd-4c53-b2ca-6260c486a80f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+  module:
+    - user
+id: group_content_type_551a2c1eda137
+label: 'Salon des familles: Adhésion au groupe'
+description: 'Ajoute des utilisateurs aux groupes en tant que membres.'
+group_type: salon_des_familles
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

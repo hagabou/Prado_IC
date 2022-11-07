@@ -1,0 +1,17 @@
+uuid: 17e58322-31e8-4930-bfcf-8eebbfb436ea
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+  enforced:
+    config:
+      - user.role.parent
+id: salon_des_familles-1d1e2f892
+label: Parent
+weight: 17
+internal: true
+audience: outsider
+group_type: salon_des_familles
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,12 @@
+uuid: 38af4b41-c382-4ca7-be22-dc95c692e1d8
+langcode: fr
+status: true
+dependencies: {  }
+label: espace-collaboratif.cesanneesincroyables.fr
+id: espace_collaboratif_cesanneesincroyables_fr
+service: 'https://espace-collaboratif.cesanneesincroyables.fr*'
+sso: false
+attributes:
+  name: name
+  mail: mail
+  roles: roles

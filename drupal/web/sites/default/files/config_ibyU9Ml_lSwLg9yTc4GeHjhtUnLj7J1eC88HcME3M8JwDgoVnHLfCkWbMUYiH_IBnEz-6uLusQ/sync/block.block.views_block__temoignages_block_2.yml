@@ -1,0 +1,24 @@
+uuid: 831eeec5-8cc8-4f8f-aa33-8b3665709f63
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.temoignages
+  module:
+    - views
+  theme:
+    - d8base
+id: views_block__temoignages_block_2
+theme: d8base
+region: auto_hidden_block
+weight: 0
+provider: null
+plugin: 'views_block:temoignages-block_2'
+settings:
+  id: 'views_block:temoignages-block_2'
+  label: 'CE QU’ILS EN DISENT'
+  provider: views
+  label_display: visible
+  views_label: 'CE QU’ILS EN DISENT'
+  items_per_page: '2'
+visibility: {  }

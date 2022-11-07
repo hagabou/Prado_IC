@@ -1,0 +1,27 @@
+uuid: 4c1b4d51-ffa8-4d3c-b85a-6df884a61f90
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - d8base
+id: connexionutilisateur
+theme: d8base
+region: auto_hidden_block
+weight: 0
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'Connexion utilisateur'
+  provider: user
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

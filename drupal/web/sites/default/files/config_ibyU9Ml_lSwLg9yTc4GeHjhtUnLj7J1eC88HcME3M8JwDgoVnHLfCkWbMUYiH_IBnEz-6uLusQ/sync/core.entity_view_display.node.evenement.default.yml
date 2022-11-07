@@ -1,0 +1,87 @@
+uuid: 2a1ed735-a564-4506-b555-195d617bd20a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.evenement.body
+    - field.field.node.evenement.field_affichage
+    - field.field.node.evenement.field_catego
+    - field.field.node.evenement.field_date
+    - field.field.node.evenement.field_image
+    - field.field.node.evenement.field_lien
+    - field.field.node.evenement.field_nom_du_lien
+    - field.field.node.evenement.field_webinaire_en_lien
+    - node.type.evenement
+  module:
+    - datetime
+    - image
+    - link
+    - text
+    - user
+id: node.evenement.default
+targetEntityType: node
+bundle: evenement
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_catego:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_date:
+    weight: 1
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_image:
+    weight: 4
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_lien:
+    weight: 5
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_webinaire_en_lien:
+    weight: 6
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_affichage: true
+  field_nom_du_lien: true
+  langcode: true

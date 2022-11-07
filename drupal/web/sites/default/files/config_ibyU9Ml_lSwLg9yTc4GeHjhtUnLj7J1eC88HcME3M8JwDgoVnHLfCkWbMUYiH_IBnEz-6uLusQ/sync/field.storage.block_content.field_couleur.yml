@@ -1,0 +1,38 @@
+uuid: c7234673-3e49-4c71-b216-a34621689cae
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+_core:
+  default_config_hash: z4rPEgkbp08ms4d010TTeZRSdfm0F9aWFe9vmIWF4SQ
+id: block_content.field_couleur
+field_name: field_couleur
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: gris
+      label: 'Gris clair'
+    -
+      value: bleu
+      label: Bleu
+    -
+      value: vert
+      label: Vert
+    -
+      value: jaune
+      label: Jaune
+    -
+      value: saumon
+      label: Saumon
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

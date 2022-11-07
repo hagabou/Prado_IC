@@ -1,0 +1,19 @@
+uuid: 70fca151-c52c-48ec-8625-d226c5609d4b
+langcode: fr
+status: true
+dependencies:
+  module:
+    - address
+    - group
+id: group.field_adresse
+field_name: field_adresse
+entity_type: group
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

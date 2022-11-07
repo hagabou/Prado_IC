@@ -1,0 +1,12 @@
+uuid: c78bba11-7d02-4573-bdb2-9963d68c9fe6
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+_core:
+  default_config_hash: gG25hWuHFsvYNN7-I1iRd2lX7vgBJEGf7IWBHASZfqE
+id: paragraphs_library_item.token
+label: 'Jeton (token)'
+targetEntityType: paragraphs_library_item
+cache: true

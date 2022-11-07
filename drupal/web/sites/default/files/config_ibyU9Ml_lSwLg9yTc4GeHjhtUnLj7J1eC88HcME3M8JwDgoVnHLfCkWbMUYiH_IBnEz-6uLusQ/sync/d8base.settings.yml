@@ -1,0 +1,22 @@
+features:
+  node_user_picture: 0
+  comment_user_picture: 0
+  comment_user_verification: 0
+  favicon: 0
+logo:
+  use_default: 0
+  path: 'public://Logo-CAI-typoblanche.png'
+favicon:
+  use_default: 1
+show_social_icon: 0
+facebook_url: ''
+twitter_url: ''
+linkedin_url: ''
+instagram_url: ''
+rss_url: ''
+show_credit_link: 0
+show_slideshow: 0
+slide_image_path1: {  }
+slide_title_1: 'The Easiest Way to Get suitable Property'
+slide_description_1: 'Find Flats, Apartments & Real Estate'
+slide_url_1: '#'

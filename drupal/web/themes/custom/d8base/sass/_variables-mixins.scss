@@ -1,0 +1,113 @@
+/**
+ COULEURS
+ **/
+$couleurBase: #672371; //vert -> violet CAI
+$couleurUrscop: #E63E4B; // orange -> rouge CAI 
+$couleurRehaut: #FDD300; // jaune -> jaune CAI
+$couleurFondPastel: #bac586; // vert clair gris
+$couleurBlanc: #fff;
+$couleurNoir: #000;
+$couleurBaseFont: #020202; // presque noir
+$couleurJaune: #FDD300; // -> jaune CAI
+$couleurOrange: #E63E4B; // -> rouge CAI 
+$couleurVert: #672371; // -> violet CAI
+$couleurGrisClair: #cbcbcb;
+$couleurGrisClair2: #e6e6e6;
+
+
+
+// Variables
+$fontFamily: 'Raleway', sans-serif;
+$titleFontFamily: 'Raleway', sans-serif;
+$baseFontSize: 14px;
+$bodyBGColor: $couleurBlanc;
+$baseFontColor: $couleurBaseFont;
+
+$linkColor: $couleurRehaut;
+$linkColorHover: $couleurUrscop;
+
+$desktopMenuColor: $couleurBlanc;
+$desktopMenuHover: $couleurUrscop;
+$desktopMenuDropDownBG: #ce3131;
+$desktopMenuDropDownText: #fff;
+$desktopMenuDropDownHover: #ffa6a5;
+
+$mobileMenuBg: rgba(0, 0, 0, 0.80);
+$mobileMenuColor: #fff;
+$mobileMenuHover: #fff;
+$mobileMenuDropDownBG: '';
+$mobileMenuDropDownText: '';
+$mobileMenuDropDownHover: '';
+
+// A map of breakpoints.
+$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  sm2: 950px,
+  md: 992px,
+  lg: 1200px
+);
+
+// Mixin
+@mixin globalButton(){
+	background: #51b371;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	padding: 14px 30px;
+	line-height: 100%;
+	margin-right: 2px;
+	display: inline-block;
+	font-weight: 400;
+	@include border-radius(3px);
+	@include transition(all 0.3s);
+}
+
+@mixin globalButtonHover(){
+    background: $linkColor;
+    color: #fff;
+}
+
+// Responsive
+@mixin respond-below($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+
+  // If the breakpoint doesn't exist in the map.
+  } @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Respond above.
+@mixin respond-above($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+
+  // If the breakpoint doesn't exist in the map.
+  } @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}

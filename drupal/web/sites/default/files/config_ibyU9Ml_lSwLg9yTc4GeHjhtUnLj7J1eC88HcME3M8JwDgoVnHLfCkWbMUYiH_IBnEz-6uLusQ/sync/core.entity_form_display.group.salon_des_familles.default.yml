@@ -1,0 +1,77 @@
+uuid: f00ae435-6950-4e0c-acc3-7b2e75f4e1fc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.group.salon_des_familles.field_adresse
+    - field.field.group.salon_des_familles.field_departement
+    - field.field.group.salon_des_familles.field_description
+    - field.field.group.salon_des_familles.field_etat
+    - field.field.group.salon_des_familles.field_groupe_virtuel
+    - field.field.group.salon_des_familles.field_nom_machine
+    - field.field.group.salon_des_familles.field_ouvre_un_salon
+    - group.type.salon_des_familles
+  module:
+    - address
+    - chosen_field
+    - text
+id: group.salon_des_familles.default
+targetEntityType: group
+bundle: salon_des_familles
+mode: default
+content:
+  field_adresse:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_departement:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: chosen_select
+    region: content
+  field_description:
+    weight: 4
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+  field_etat:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_groupe_virtuel:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_ouvre_un_salon:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_nom_machine: true
+  langcode: true
+  path: true
+  uid: true

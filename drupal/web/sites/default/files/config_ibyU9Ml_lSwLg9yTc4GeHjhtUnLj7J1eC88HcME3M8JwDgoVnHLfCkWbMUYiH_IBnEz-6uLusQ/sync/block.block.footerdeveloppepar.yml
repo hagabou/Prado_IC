@@ -1,0 +1,25 @@
+uuid: b15cdffc-db15-4dc4-9ac9-075614603679
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c9989395-5464-41b4-84e5-cd63cfe6d825'
+  module:
+    - block_content
+  theme:
+    - d8base
+id: footerdeveloppepar
+theme: d8base
+region: footer_third
+weight: 0
+provider: null
+plugin: 'block_content:c9989395-5464-41b4-84e5-cd63cfe6d825'
+settings:
+  id: 'block_content:c9989395-5464-41b4-84e5-cd63cfe6d825'
+  label: 'Footer développé par'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

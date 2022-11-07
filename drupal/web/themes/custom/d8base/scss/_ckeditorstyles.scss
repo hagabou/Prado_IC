@@ -1,0 +1,167 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 18 févr. 2021, 11:27:42
+    Author     : camille
+*/
+
+span{
+    &.rouge{
+        color:$couleur_secondaire;
+    }
+    &.violet{
+        color:$couleurBase;
+    }
+    &.jaune{
+        color:$couleur_tertaire;
+    }
+}
+
+/*Gros boutons bas de page*/
+a.btn_big_bottom{
+    @include globalButton;
+    width: 100%;
+    font-size: 1.4em;
+    padding: 2rem 4rem;
+    max-width: 500px;
+    &:hover{
+      @include globalButtonHover;
+    }
+}
+/*couleur selon la section*/
+.rootpath-parents p a.btn_big_bottom{
+    background-color: $couleur_secondaire;
+    color:#fff;
+    &:hover{
+      background-color:  $couleur_secondaire_dark;
+      color:#fff;
+    }
+}
+
+p.intro{
+    font-weight: bold;
+    text-align: center;
+    padding: $paddingcontent_large;
+}
+
+@include respond-below(lg){
+    p.intro{
+        padding:$paddingcontentrespond_below_md;
+    }
+}
+
+@include respond-below(sm){
+    p.intro{
+        padding: $paddingcontentrespond_below_sm;
+    }
+}
+
+/*Liste avec coches*/
+ul.liste_coches{
+   list-style: none;
+   padding-left: 0;
+   li{
+       margin-bottom: 5px;
+       padding-left: 30px;
+       &:before{
+            @include cochedebutligne();
+            margin-right: 0;
+            width: 30px;
+            height: 22px;
+            margin-left: -30px;
+        }
+   }
+}
+
+.rootpath-parents ul.liste_coches li:before{
+    background-image: $bgcocherouge;
+}
+
+.rootpath-professionnels  ul.liste_coches li:before{
+    background-image: $bgcocheviolette;
+}
+
+span.tarif{
+    border-radius: $btnraduis;
+    padding: $btnpadding;
+    background-color: $couleurGrisClair;
+    font-weight: bold;
+    display: inline-block;
+}
+span.date{
+    border-radius: $btnraduis;
+    border: $couleurBase 1px solid;
+    color:$couleurBase;
+    padding: $btnpadding;
+    background-color: #fff;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/*Outils de mise en forme supplémentaires*/
+div.blocviolet{
+    padding: 10px;
+    background-color: $couleurBase;
+    color:#fff;
+    border-radius: 7px;
+    h2,h3, p{
+        color:#fff;
+    }
+}
+
+div.blocrouge{
+    padding: 10px;
+    background-color: $couleur_secondaire;
+    color:#fff;
+    border-radius: 7px;
+    h2,h3, p{
+        color:#fff;
+    }
+}
+
+div.blocgris{
+    padding: 10px;
+    background-color: $couleurGrisClair;
+    border-radius: 7px;
+}
+
+p.decalage{
+    padding-left: 30px;
+}
+
+p.big{
+    font-size: 1.6em;
+}
+
+p.misenavant{
+    font-size: 1.6em;
+}
+
+/*ajustement mise en forme*/
+blockquote{
+    font-style: italic;
+/*    &:before{
+        content: "\f10d";
+        font-family: $fontawesome;
+    }
+    &:after{
+        content: "\f10e";
+        font-family: $fontawesome;
+    }*/
+}
+/*ajustement mise en forme image avec légende*/
+.caption.align-left{
+    margin-left: 0;
+}
+
+.caption.align-right{
+    margin-right: 0;
+}
+
+.caption > figcaption{
+    font-size: .8em;
+    font-style: italic;
+}

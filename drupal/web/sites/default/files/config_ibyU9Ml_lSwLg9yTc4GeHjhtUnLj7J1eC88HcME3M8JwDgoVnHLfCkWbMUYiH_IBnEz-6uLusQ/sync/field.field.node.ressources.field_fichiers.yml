@@ -1,0 +1,27 @@
+uuid: 4568afaa-a6f7-4d14-b5e3-c112f7120e2b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fichiers
+    - node.type.ressources
+  module:
+    - file
+id: node.ressources.field_fichiers
+field_name: field_fichiers
+entity_type: node
+bundle: ressources
+label: Fichiers
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'ressources/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt rdf zip pdf doc docx ods odt ppt pptx odp xls xlsx pub pubx jpg jpeg png gif'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

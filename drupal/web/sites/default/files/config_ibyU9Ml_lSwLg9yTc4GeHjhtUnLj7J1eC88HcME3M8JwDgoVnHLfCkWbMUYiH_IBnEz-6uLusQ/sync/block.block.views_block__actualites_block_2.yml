@@ -1,0 +1,30 @@
+uuid: 3897e3fd-0667-4fb3-87e7-e16e995789f3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.actualites
+  module:
+    - system
+    - views
+  theme:
+    - d8base
+id: views_block__actualites_block_2
+theme: d8base
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:actualites-block_2'
+settings:
+  id: 'views_block:actualites-block_2'
+  label: Actualités
+  provider: views
+  label_display: visible
+  views_label: Actualités
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /a-propos
+    negate: false
+    context_mapping: {  }

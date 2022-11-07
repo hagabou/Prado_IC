@@ -1,0 +1,11 @@
+uuid: 15a29ca4-48b9-4030-81b1-6b365b9fbb9a
+langcode: fr
+status: true
+dependencies: {  }
+id: abonne
+label: Abonné
+weight: 19
+is_admin: null
+permissions:
+  - 'acces espace pro'
+  - 'access user contact forms'

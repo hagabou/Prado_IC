@@ -1,0 +1,12 @@
+uuid: 9527abe5-42ce-43df-a827-7a1132c51dcc
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: KocQoJJNTc_1P9YeHzexx_p621kAsyj9gLZqi6Q8WIY
+id: formulaire
+label: Formulaire
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

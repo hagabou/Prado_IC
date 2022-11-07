@@ -1,0 +1,22 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.formulaire.field_webform
+    - paragraphs.paragraphs_type.formulaire
+  module:
+    - webform
+id: paragraph.formulaire.default
+targetEntityType: paragraph
+bundle: formulaire
+mode: default
+content:
+  field_webform:
+    weight: 0
+    label: hidden
+    settings:
+      source_entity: true
+    third_party_settings: {  }
+    type: webform_entity_reference_entity_view
+    region: content
+hidden: {  }

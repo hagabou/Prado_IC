@@ -1,0 +1,10 @@
+uuid: 28f0b372-7594-4239-9546-887e85213268
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: qbHgvvDJmguDuiemUHU-ARH8S1C2ROhB1gZrbCe2d50
+id: date_unique_courte
+label: 'Date unique courte'
+locked: false
+pattern: d/m/Y

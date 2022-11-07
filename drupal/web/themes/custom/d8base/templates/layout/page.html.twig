@@ -1,0 +1,239 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ * - logo: The url of the logo image, as defined in theme settings.
+ * - site_name: The name of the site. This is empty when displaying the site
+ *   name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site. This is empty when displaying the site
+ *   slogan has been disabled in theme settings.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - messages: Status and error messages. Should be displayed prominently.
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.navigation: Items for the Navigation region.
+ * - page.page_title: Used by Current page Title.
+ * - page.banner: Items for the banner region.
+ * - page.highlighted: Items for the highlighted top  region.
+ * - page.content_top: The main content top of the current page.
+ * - page.help: Item for the help region.
+ * - page.breadcrumb: Item for the Breadcrumb region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.sidebar_second: Items for the second sidebar.
+ * - page.content_bottom: Items for the bottom in content region.
+ * - page.footer_top: Items for the footer top region.
+ * - page.footer_first: Items for the footer first region.
+ * - page.footer_second: Items for the footer Second region.
+ * - page.footer_third: Items for the footer third region.
+ * - page.footer_bottom: Items for the footer bottom region.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ *
+ * @ingroup themeable
+ */
+#}
+{# container-fluid ajoute des paddings .. nop #}
+{#{% if node and node.bundle() == "page" %}{% set conteneur = 'container' %}{% else %}{% set conteneur = 'container' %}{% endif %}#}
+
+<!-- Start: Header -->
+<header role="banner" class="header" id="main-header">
+    <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-6-24">
+            {% if page.header %}
+                {{ page.header }}
+            {% endif %}
+            <button type="button" id="toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        {% if page.primary_menu or page.search %}
+            <div class="pure-u-1 pure-u-md-18-24 justify-content-end">
+                {% if page.search %}
+                    {{ page.search }}
+                {% endif %}
+                {% if page.primary_menu %}
+                    {{ page.primary_menu }}
+                {% endif %}
+            </div>
+        {% endif %}
+
+    </div><!--pure-g-->
+</header>
+<!-- End: Region -->
+
+<!-- Start: ESPACE PRO -->
+{% if page.espace_pro_logo or espace_pro_connexion %}
+    <div class="espace_pro" id="espace_pro">
+        <div class="container">
+            <div class="pure-g clearfix">
+                {% if page.espace_pro_logo %}
+                    <div class="espace_pro_logo pure-u-24-24 pure-u-sm-24-24">{{ page.espace_pro_logo }}</div>
+                {% endif %}
+                {% if page.espace_pro_connexion %}
+                    <div class="espace_pro_connexion  pure-u-24-24 pure-u-sm-4-24">{{ page.espace_pro_connexion }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+<!-- End: Region -->
+
+<!-- Start: Top widget -->
+{% if page.topwidget_first or page.topwidget_second or page.topwidget_third %}
+
+    <div class="topwidget" id="topwidget">
+        <div class="container">
+            {% if page.topwidget_title %}
+                <div class="custom-block-title" >
+                    {{ page.topwidget_title }}
+                </div>
+            {% endif %}
+
+            <div class="row topwidget-list clearfix">
+                {% if page.topwidget_first %}
+                    <div class = {{ topwidget_class }}>{{ page.topwidget_first }}</div>
+                {% endif %}
+                {% if page.topwidget_second %}
+                    <div class = {{ topwidget_class }}>{{ page.topwidget_second }}</div>
+                {% endif %}
+                {% if page.topwidget_third %}
+                    <div class = {{ topwidget_class }}>{{ page.topwidget_third }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+<!-- End: Region -->
+
+<!--Start: Highlighted -->
+{% if page.highlighted %}
+    <div class="highlighted">
+        <div class="container">
+            {{ page.highlighted }}
+        </div>
+    </div>
+{% endif %}
+<!--End: Highlighted -->
+
+<!--Start: Title -->
+{%  if page.page_title and not is_front %}
+    <div id="page-title">
+        <div id="page-title-inner">
+            {% if not is_front %}
+                <div class="pure-g">
+                    <div class="pure-u pure-u-24-24">{{ page.breadcrumb }}</div>
+                </div>
+            {% endif %}
+            {{ page.page_title }}
+        </div>
+    </div>
+{% endif %}
+<!--End: Title -->
+
+<!--Start: Breadcrumb -->
+{%  if page.breadcrumb and not is_front %}
+    <div id="breadcrumb">
+        <div class="pure-g">
+            <div class="pure-u-24-24">{{ page.breadcrumb }}</div>
+        </div>
+    </div>
+{% endif %}
+<!--End: Title -->
+
+<!--Start: main-content -->
+<main role="main" class="main-content">
+    <div class="wrap-content">
+        <div class="pure-g layout">
+            {% if page.sidebar_first %}
+                <div class="pure-u-1 {{sidebarfirst}}">
+                    <div class="sidebar">
+                        {{ page.sidebar_first }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if page.content %}
+                <div class="pure-u-1 {{contentlayout}}">
+                    <div class="content_layout">
+                        {{ page.content }}
+                    </div>              
+                </div>
+            {% endif %}
+
+            {% if page.sidebar_second %}
+                <div class="pure-u-1 {{sidebarsecond}}">
+                    <div class="sidebar">
+                        {{ page.sidebar_second }}
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</main>
+<!-- End: main-content -->
+
+<!-- Start: Footer widgets -->
+{% if page.footer_first or page.footer_second or page.footer_third %}
+
+<footer role="contentinfo" class="footer" id="footer">
+        {% if page.footer_title %}
+            <div class="custom-block-title" >
+                {{ page.footer_title }}
+            </div>
+        {% endif %}
+
+        <div class="pure-g {{ footer_align }}">
+            {% if page.footer_first %}
+{#les 3 colonnes ne sont pas égales#}
+{#{{ footer_class }}#}
+                <div class ="pure-u-1 pure-u-md-2-24">
+                    {{ page.footer_first }}
+                </div>
+            {% endif %}
+            {% if page.footer_second %}
+                <div class ="pure-u-1 pure-u-md-16-24">
+                    {{ page.footer_second }}
+                </div>
+            {% endif %}
+            {% if page.footer_third %}
+                <div class ="pure-u-1 pure-u-md-6-24">
+                    {{ page.footer_third }}
+                </div>
+            {% endif %}
+        </div>
+</footer>
+{% endif %}
+<!-- End: Region -->
+
+
+
+
+

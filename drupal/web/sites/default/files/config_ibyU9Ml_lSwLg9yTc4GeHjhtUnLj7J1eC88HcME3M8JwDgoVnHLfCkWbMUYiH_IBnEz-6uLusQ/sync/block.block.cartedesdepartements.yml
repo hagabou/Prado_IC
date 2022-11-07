@@ -1,0 +1,20 @@
+uuid: c5f91f97-a3c6-42b3-929d-a7e04fc00769
+langcode: fr
+status: true
+dependencies:
+  module:
+    - en_region
+  theme:
+    - d8base
+id: cartedesdepartements
+theme: d8base
+region: auto_hidden_block
+weight: 0
+provider: null
+plugin: carte_departements
+settings:
+  id: carte_departements
+  label: 'Carte des départements'
+  provider: en_region
+  label_display: '0'
+visibility: {  }

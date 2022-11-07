@@ -1,0 +1,29 @@
+uuid: cea5ae81-21e7-45c3-8434-71d7de6d9232
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webinaire_en_lien
+    - node.type.evenement
+    - taxonomy.vocabulary.webinaires
+id: node.evenement.field_webinaire_en_lien
+field_name: field_webinaire_en_lien
+entity_type: node
+bundle: evenement
+label: 'Webinaire en lien'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webinaires: webinaires
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

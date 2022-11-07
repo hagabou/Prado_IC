@@ -1,0 +1,20 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_corps_de_texte
+    - paragraphs.paragraphs_type.bloc_colore
+  module:
+    - text
+id: paragraph.bloc_colore.field_corps_de_texte
+field_name: field_corps_de_texte
+entity_type: paragraph
+bundle: bloc_colore
+label: 'Corps de texte'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

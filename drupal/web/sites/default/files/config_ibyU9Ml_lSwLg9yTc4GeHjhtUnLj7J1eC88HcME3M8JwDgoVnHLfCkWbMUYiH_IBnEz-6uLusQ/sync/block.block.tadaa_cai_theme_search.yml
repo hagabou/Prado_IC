@@ -1,0 +1,23 @@
+uuid: b6db10e5-1b04-4502-865e-61937d70b30f
+langcode: fr
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: XtyNN_naHxT0oeqiSmOPc3pB9urhK3qOFNSvfhhGjtY
+id: tadaa_cai_theme_search
+theme: tadaa_cai_theme
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+  page_id: ''
+visibility: {  }

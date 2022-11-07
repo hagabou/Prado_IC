@@ -1,0 +1,14 @@
+uuid: fbcc14db-69c7-4168-9c1f-9e08c1713bd3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+id: salon_des_familles-member
+label: Membre
+weight: -100
+internal: true
+audience: member
+group_type: salon_des_familles
+permissions_ui: true
+permissions: {  }

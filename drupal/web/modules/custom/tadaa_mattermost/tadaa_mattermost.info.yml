@@ -1,0 +1,27 @@
+name: 'Tadaa'
+description: 'Tadaa module : link LDAP users to Nextcloud instances; and others stuffs.'
+package: 'Tadaa'
+
+type: module
+core: 8.x
+
+dependencies:
+  - webform:webform
+  - flexslider:flexslider
+  - flexslider:flexslider_views
+  - linkit:linkit
+  - paragraphs:paragraphs
+  - paragraphs:paragraphs_library
+  - entity_reference_layout:entity_reference_layout
+  - entity_reference_layout:erl_paragraphs
+  - entity_reference_layout:erl_layouts
+  - entity_usage:entity_usage
+  - drupal:options
+  - drupal:ckeditor
+  - drupal:text
+  - drupal:block_content
+  - drupal:block
+  - drupal:layout_builder
+  - drupal:path
+
+

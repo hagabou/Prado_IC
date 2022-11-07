@@ -1,0 +1,17 @@
+map_departements:
+  version: 0.2
+  js:
+    js/map/jquery.vmap.ed.js: {}
+    js/map/jquery-jvectormap-fr-dpt.js: {}
+    js/map/map.js?v=1: {preprocess: false}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+  css:
+    component:
+      css/map_departements.css: {}
+      css/jqvmap.css: {}
+      

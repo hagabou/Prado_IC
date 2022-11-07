@@ -1,0 +1,21 @@
+uuid: 51c9d900-0f00-4ed4-a4ef-b4cf7bf0263e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_affichage
+    - node.type.evenement
+  module:
+    - options
+id: node.evenement.field_affichage
+field_name: field_affichage
+entity_type: node
+bundle: evenement
+label: Affichage
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

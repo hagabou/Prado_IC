@@ -1,0 +1,21 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_drupal.field_reference_au_bloc
+    - paragraphs.paragraphs_type.bloc_drupal
+id: paragraph.bloc_drupal.default
+targetEntityType: paragraph
+bundle: bloc_drupal
+mode: default
+content:
+  field_reference_au_bloc:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

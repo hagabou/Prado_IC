@@ -1,0 +1,27 @@
+uuid: e120faf4-e582-4146-a3ad-6d182e521185
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_affichage
+field_name: field_affichage
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: site_public
+      label: 'Site public'
+    -
+      value: espace_pro
+      label: 'Espace pro'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

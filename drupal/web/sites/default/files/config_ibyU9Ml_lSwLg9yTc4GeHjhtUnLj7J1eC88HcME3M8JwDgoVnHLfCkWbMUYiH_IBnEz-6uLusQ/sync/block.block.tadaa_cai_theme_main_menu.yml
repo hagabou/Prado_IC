@@ -1,0 +1,27 @@
+uuid: 052c885a-1f13-4e6a-a361-05bc6267a09c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: j-hCBhEg86mPGcurzgqMZNd_-9XVnfKOSpHZ6IjDR0k
+id: tadaa_cai_theme_main_menu
+theme: tadaa_cai_theme
+region: header
+weight: 1
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

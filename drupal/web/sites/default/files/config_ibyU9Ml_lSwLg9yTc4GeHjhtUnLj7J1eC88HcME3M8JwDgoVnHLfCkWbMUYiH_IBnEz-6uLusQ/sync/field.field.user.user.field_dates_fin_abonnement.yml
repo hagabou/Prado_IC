@@ -1,0 +1,24 @@
+uuid: 6949cfae-ca83-4bf0-9a8f-65d2ec3943db
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dates_fin_abonnement
+  module:
+    - datetime
+    - user
+id: user.user.field_dates_fin_abonnement
+field_name: field_dates_fin_abonnement
+entity_type: user
+bundle: user
+label: 'Date(s) de fin abonnement'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: relative
+    default_date: '+1 year'
+default_value_callback: ''
+settings: {  }
+field_type: datetime

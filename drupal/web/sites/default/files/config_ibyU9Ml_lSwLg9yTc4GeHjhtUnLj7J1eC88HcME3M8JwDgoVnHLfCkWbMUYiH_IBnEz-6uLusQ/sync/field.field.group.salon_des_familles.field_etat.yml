@@ -1,0 +1,21 @@
+uuid: 3bf95660-b4dd-431e-afef-067624e9221c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_etat
+    - group.type.salon_des_familles
+  module:
+    - options
+id: group.salon_des_familles.field_etat
+field_name: field_etat
+entity_type: group
+bundle: salon_des_familles
+label: Etat
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

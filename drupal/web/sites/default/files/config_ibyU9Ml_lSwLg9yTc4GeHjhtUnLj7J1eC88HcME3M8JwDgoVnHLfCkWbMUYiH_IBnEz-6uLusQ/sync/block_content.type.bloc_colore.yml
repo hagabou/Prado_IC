@@ -1,0 +1,10 @@
+uuid: d492976f-de15-484b-a072-ee3bb6ba13e1
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: tPl6WWs-2vwujDqcwfSMyoWR4YsL5PsK1tRnxwyMSrs
+id: bloc_colore
+label: 'Bloc coloré'
+revision: 0
+description: ''

@@ -1,0 +1,140 @@
+uuid: 777c15b9-6782-450f-9eb8-5d2be1b91e01
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_adresse
+    - field.field.user.user.field_cacher_mes_coordonnees
+    - field.field.user.user.field_dates_abonnement
+    - field.field.user.user.field_dates_fin_abonnement
+    - field.field.user.user.field_departement
+    - field.field.user.user.field_fonction
+    - field.field.user.user.field_nom
+    - field.field.user.user.field_prenom
+    - field.field.user.user.field_structure
+    - field.field.user.user.field_telephone
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - address
+    - datetime
+    - entitygroupfield
+    - image
+    - telephone
+    - user
+_core:
+  default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  contact:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  entitygroupfield:
+    type: entitygroupfield_select_widget
+    weight: 1
+    region: content
+    settings:
+      help_text: ''
+      label: 'Nom du groupe'
+      multiple: true
+      required: false
+    third_party_settings: {  }
+  field_adresse:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_cacher_mes_coordonnees:
+    weight: 7
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_dates_abonnement:
+    type: datetime_default
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dates_fin_abonnement:
+    type: datetime_default
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_departement:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_fonction:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_nom:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_prenom:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_structure:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_telephone:
+    weight: 5
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  language:
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 6
+    region: content
+  user_picture:
+    type: image_image
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true
+  path: true

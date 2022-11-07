@@ -1,0 +1,26 @@
+uuid: 88330782-99af-4a92-8d4b-2e0d99fdfd0f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.formulaire.field_webform
+    - paragraphs.paragraphs_type.formulaire
+  module:
+    - webform
+_core:
+  default_config_hash: s025JEjo097hwXkyepALhH58S39QZhQtGeB_Q-fUDoo
+id: paragraph.formulaire.default
+targetEntityType: paragraph
+bundle: formulaire
+mode: default
+content:
+  field_webform:
+    weight: 0
+    settings:
+      default_data: true
+    third_party_settings: {  }
+    type: webform_entity_reference_select
+    region: content
+hidden:
+  created: true
+  status: true

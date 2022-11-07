@@ -1,0 +1,23 @@
+uuid: 7194c37a-18fc-4a5f-abb2-bd75780da3d7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_couleur
+    - paragraphs.paragraphs_type.bloc_colore
+  module:
+    - options
+_core:
+  default_config_hash: vc9389Cl_TcfcudspvNjw9ODOfnu9Pzqi9MnHG7bkTI
+id: paragraph.bloc_colore.field_couleur
+field_name: field_couleur
+entity_type: paragraph
+bundle: bloc_colore
+label: Couleur
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

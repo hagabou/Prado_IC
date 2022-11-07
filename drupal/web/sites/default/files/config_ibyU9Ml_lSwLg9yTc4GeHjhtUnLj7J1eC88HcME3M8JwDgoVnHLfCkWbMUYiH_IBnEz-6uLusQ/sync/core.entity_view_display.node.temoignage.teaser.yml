@@ -1,0 +1,38 @@
+uuid: 6b08bc72-9eab-4d31-8c70-28f42244d854
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.temoignage.body
+    - field.field.node.temoignage.field_ca
+    - field.field.node.temoignage.field_signature
+    - node.type.temoignage
+  module:
+    - text
+    - user
+id: node.temoignage.teaser
+targetEntityType: node
+bundle: temoignage
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 0
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  field_signature:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_ca: true
+  langcode: true
+  links: true

@@ -1,0 +1,22 @@
+uuid: bfc88d6a-a847-436c-ac62-74bd83eeaf54
+langcode: en
+status: true
+dependencies: {  }
+client_id: mattermost
+server_id: ces_annees_incroyables
+name: 'Mattermost CAI'
+client_secret: $S$E/bRcmHZ8UmVdtoua/txjYGVRA1Xn8u/eWdsu4MjDJG80/mvPH3J
+public_key: ''
+redirect_uri: "https://chat.cai.le-prado.fr/login/gitlab/complete\r\nhttps://chat.cai.le-prado.fr/signup/gitlab/complete"
+automatic_authorization: true
+settings:
+  override_grant_types: true
+  allow_implicit: true
+  grant_types:
+    authorization_code: authorization_code
+    client_credentials: client_credentials
+    refresh_token: refresh_token
+    password: password
+    'urn:ietf:params:oauth:grant-type:jwt-bearer': '0'
+  always_issue_new_refresh_token: false
+  unset_refresh_token_after_use: true

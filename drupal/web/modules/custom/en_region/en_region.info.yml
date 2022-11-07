@@ -1,0 +1,7 @@
+name: 'Page En Région - Carte CAI'
+type: module
+description: 'Ajoute le bloc Carte des départements'
+package: 'Tadaa'
+
+type: module
+core: 8.x

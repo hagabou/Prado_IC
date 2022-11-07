@@ -1,0 +1,32 @@
+uuid: cc8ee864-f87c-44ae-b0d2-a8bedea091b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - d8base
+_core:
+  default_config_hash: 8a31Ywc1t2zlddGd3bmDrFMefWqgSK2E02ceFdr-bfc
+id: d8base_account_menu
+theme: d8base
+region: espace_pro_connexion
+weight: -13
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'Menu utilisateur'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/espace-pro\r\n/espace-pro/*\r\n/salon-des-familles"
+    negate: false
+    context_mapping: {  }

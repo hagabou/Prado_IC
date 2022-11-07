@@ -1,0 +1,27 @@
+uuid: a3d6f1ad-96dc-459d-9ecf-8e8820f257d3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: McZ7WMY0v61a0m6fhImd4kxLBEYi0MOC6X9spsQA0Y0
+id: tadaa_cai_theme_footer
+theme: tadaa_cai_theme
+region: footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Footer menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

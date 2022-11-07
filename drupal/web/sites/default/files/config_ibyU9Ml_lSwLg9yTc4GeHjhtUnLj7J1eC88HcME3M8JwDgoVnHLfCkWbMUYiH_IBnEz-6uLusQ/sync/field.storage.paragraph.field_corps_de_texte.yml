@@ -1,0 +1,21 @@
+uuid: 0d3b52d4-4f03-4475-87f0-423069f1254d
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+_core:
+  default_config_hash: t3hlvRdFvE6BGmlnRUQoR7gI5XmRzOtxvHgtVcK8bIw
+id: paragraph.field_corps_de_texte
+field_name: field_corps_de_texte
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

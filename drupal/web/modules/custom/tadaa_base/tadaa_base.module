@@ -1,0 +1,48 @@
+<?php
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * Protéger l'accès aux nodes dont l'url commence par /espace-pro
+ * @param \Drupal\node\NodeInterface $node
+ * @param type $op
+ * @param \Drupal\Core\Session\AccountInterface $account
+ * @return type
+ */
+function tadaa_base_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+    $nid = $node->id();
+    $url_alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $nid); //, $langcode);
+    $path_tab = explode('/',$url_alias);
+
+    // Tout ce qui est sous espace-pro : on protège
+    if($path_tab[1] == "espace-pro") {
+        if('view' == $op && $account->hasPermission('acces espace pro')) {
+            return AccessResult::neutral();
+        }
+        // Sinon interdit !
+        return AccessResult::forbidden();
+    }
+    
+    
+    // No opinion
+    return AccessResult::neutral();
+}
+
+/**
+ * Ajouter le style CSS partout
+ * @param array $page
+ */
+function tadaa_base_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'tadaa_base/styles';
+}
+
+
+/**
+ * Ajouter des liens sous le formulaire de connexion
+ */
+function tadaa_base_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if($form_id == "user_login_form") {
+        $form['actions']['#weight'] = 100;
+        $form['mot_de_passe_oublie'] = ['#markup' => "<p><a class='btn-third' href='/user/password'>Mot de passe oublié ?</a></p>", '#weight' => 400];
+        //$form['probleme_connexion'] = ['#markup' => "Vous rencontrez un problème de connexion : "];
+    }
+}

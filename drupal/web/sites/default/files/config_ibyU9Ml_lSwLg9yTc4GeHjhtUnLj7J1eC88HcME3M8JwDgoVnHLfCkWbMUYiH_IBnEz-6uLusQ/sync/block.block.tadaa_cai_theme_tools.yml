@@ -1,0 +1,27 @@
+uuid: 53ba9461-3e90-4062-9a32-b11fbf2b0f4d
+langcode: fr
+status: false
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: VBnzEpmW32q2e-3Yx7JNuJ9gkzZQI59jNrF5dayVkhk
+id: tadaa_cai_theme_tools
+theme: tadaa_cai_theme
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Tools
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

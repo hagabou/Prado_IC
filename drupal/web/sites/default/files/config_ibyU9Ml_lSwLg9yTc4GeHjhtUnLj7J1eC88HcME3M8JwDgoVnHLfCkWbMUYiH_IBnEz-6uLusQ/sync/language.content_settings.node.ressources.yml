@@ -1,0 +1,11 @@
+uuid: ba94a92d-1a11-4ada-a892-f9b7d02cc2d9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.ressources
+id: node.ressources
+target_entity_type_id: node
+target_bundle: ressources
+default_langcode: site_default
+language_alterable: false

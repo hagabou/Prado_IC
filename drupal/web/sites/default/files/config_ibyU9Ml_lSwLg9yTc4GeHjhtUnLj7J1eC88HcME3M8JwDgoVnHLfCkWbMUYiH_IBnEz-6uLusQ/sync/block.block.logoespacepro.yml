@@ -1,0 +1,31 @@
+uuid: d02fbcb4-acb3-4251-adf1-b5fde6c876c9
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b4ada497-a4df-4824-a045-17f5b18da6de'
+  module:
+    - block_content
+    - system
+  theme:
+    - d8base
+id: logoespacepro
+theme: d8base
+region: espace_pro_logo
+weight: -11
+provider: null
+plugin: 'block_content:b4ada497-a4df-4824-a045-17f5b18da6de'
+settings:
+  id: 'block_content:b4ada497-a4df-4824-a045-17f5b18da6de'
+  label: 'Logo Espace pro'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/espace-pro\r\n/espace-pro/*"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,28 @@
+uuid: 1e7f5160-06d4-4dac-955f-bb34100e2148
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_force
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - espace-pro
+      - main
+      - footer
+      - ressources-espace-pro
+      - account
+    parent: 'main:'
+  menu_force:
+    menu_force: 0
+    menu_force_parent: 0
+_core:
+  default_config_hash: KuyA4NHPXcmKAjRtwa0vQc2ZcyrUJy6IlS2TAyMNRbc
+name: 'Page de base'
+type: page
+description: 'Utilisez les <em>pages de base</em> pour votre contenu statique, tel que la page ''Qui sommes-nous''.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,15 @@
+@mixin box-shadow($shadow...) {
+   box-shadow: $shadow;
+}
+
+@mixin transition($transitions...) {
+    transition: $transitions;
+}
+
+@mixin transform($transform, $only3d: false) {
+    transform: $transform;
+}
+	
+@mixin border-radius($radius: $default-border-radius, $vertical-radius: false) {
+    border-radius: $radius;
+}

@@ -1,0 +1,30 @@
+uuid: 1947d2f1-6290-4e75-b22f-018306f51aee
+langcode: fr
+status: false
+dependencies:
+  config:
+    - system.menu.espace-pro
+  module:
+    - system
+  theme:
+    - d8base
+id: espacepro
+theme: d8base
+region: sidebar_second
+weight: -13
+provider: null
+plugin: 'system_menu_block:espace-pro'
+settings:
+  id: 'system_menu_block:espace-pro'
+  label: 'Accès Outils Espace pro'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/espace-pro\r\n/espace-pro/*/*"
+    negate: false
+    context_mapping: {  }

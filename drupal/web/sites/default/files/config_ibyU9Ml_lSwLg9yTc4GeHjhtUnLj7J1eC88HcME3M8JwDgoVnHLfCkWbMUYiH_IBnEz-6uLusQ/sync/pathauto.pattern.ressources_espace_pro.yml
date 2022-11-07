@@ -1,0 +1,22 @@
+uuid: 9661fb66-3105-4c66-a26b-7248f4f6f6de
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: ressources_espace_pro
+label: 'Ressources Espace Pro'
+type: 'canonical_entities:node'
+pattern: 'espace-pro/ressources/[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  d5081a96-0424-4bb5-bdff-eb96c9119041:
+    id: node_type
+    bundles:
+      ressources: ressources
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d5081a96-0424-4bb5-bdff-eb96c9119041
+selection_logic: and
+weight: -5
+relationships: {  }

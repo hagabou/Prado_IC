@@ -1,0 +1,25 @@
+uuid: fd7bebdc-601c-4681-a449-8b802d6e928a
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:33983ba5-1d4c-4b4b-aadf-c2afc303e44e'
+  module:
+    - block_content
+  theme:
+    - d8base
+id: logos
+theme: d8base
+region: footer_first
+weight: 0
+provider: null
+plugin: 'block_content:33983ba5-1d4c-4b4b-aadf-c2afc303e44e'
+settings:
+  id: 'block_content:33983ba5-1d4c-4b4b-aadf-c2afc303e44e'
+  label: Logos
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

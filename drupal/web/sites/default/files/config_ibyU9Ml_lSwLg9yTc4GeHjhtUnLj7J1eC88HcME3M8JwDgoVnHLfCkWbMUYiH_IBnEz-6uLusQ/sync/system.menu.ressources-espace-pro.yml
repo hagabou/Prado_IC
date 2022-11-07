@@ -1,0 +1,8 @@
+uuid: 4f092d7d-55e9-4614-b08a-2a4a27bcfcd9
+langcode: fr
+status: true
+dependencies: {  }
+id: ressources-espace-pro
+label: 'Ressources Espace pro'
+description: ''
+locked: false

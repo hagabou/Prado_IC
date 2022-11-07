@@ -1,0 +1,8 @@
+uuid: 4baeb3c9-65ce-42cf-ada1-6e6cdf15ceca
+langcode: fr
+status: true
+dependencies: {  }
+id: espace-pro
+label: 'Espace pro'
+description: ''
+locked: false

@@ -1,0 +1,20 @@
+uuid: 265d0dd5-509b-48d1-a71a-c4d413850f02
+langcode: fr
+status: true
+dependencies:
+  module:
+    - datetime
+    - user
+id: user.field_dates_abonnement
+field_name: field_dates_abonnement
+entity_type: user
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

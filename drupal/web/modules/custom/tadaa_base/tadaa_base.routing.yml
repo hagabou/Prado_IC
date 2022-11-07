@@ -1,0 +1,9 @@
+tadaa_base.espace_pro.login:
+  path: '/espace-pro-login'
+  defaults:
+    _controller: '\Drupal\tadaa_base\Controller\EspaceProLoginController::login'
+    _title: 'Espace Pro : connexion'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'

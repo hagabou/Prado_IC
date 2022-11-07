@@ -1,0 +1,9 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+id: paragraphs_library_item.token
+label: 'Jeton (token)'
+targetEntityType: paragraphs_library_item
+cache: true

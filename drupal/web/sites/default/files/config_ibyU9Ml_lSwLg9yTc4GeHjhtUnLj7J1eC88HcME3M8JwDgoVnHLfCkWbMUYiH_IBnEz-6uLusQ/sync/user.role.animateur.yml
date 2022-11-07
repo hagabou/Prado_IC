@@ -1,0 +1,9 @@
+uuid: 7cfe9ae9-eab4-447f-b364-5df0599cb5bc
+langcode: fr
+status: true
+dependencies: {  }
+id: animateur
+label: Animateur
+weight: 9
+is_admin: null
+permissions: {  }

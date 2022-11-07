@@ -1,0 +1,30 @@
+uuid: 47475ee3-50dc-4761-9438-3c47dc6db888
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.ressources-espace-pro
+  module:
+    - system
+  theme:
+    - d8base
+id: ressourcesespacepro_2
+theme: d8base
+region: content
+weight: 0
+provider: null
+plugin: 'system_menu_block:ressources-espace-pro'
+settings:
+  id: 'system_menu_block:ressources-espace-pro'
+  label: 'Ressources Espace pro'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/espace-pro/ressources\r\n/espace-pro/ressources/*"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,14 @@
+uuid: 07b1b418-c524-493e-8bac-c9ef4bd0e49b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+id: salon_des_familles-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: salon_des_familles
+permissions_ui: true
+permissions: {  }

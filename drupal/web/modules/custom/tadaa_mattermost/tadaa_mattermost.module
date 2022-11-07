@@ -1,0 +1,432 @@
+<?php
+
+use Pnz\MattermostClient\HttpClientConfigurator;
+use Pnz\MattermostClient\ApiClient;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
+
+define('TADAA_MATTERMOST_LOGIN', 'admin');
+define('TADAA_MATTERMOST_PASSWORD', '-----HIDDEN----');
+define('TADAA_MATTERMOST_URL', 'https://chat.cai.le-prado.fr/api/v4/');
+
+/**
+ * En faire un service, better !
+ */
+function _mm_get_api() {
+    // Connexion
+    $configurator = (new HttpClientConfigurator())
+            ->setEndpoint(TADAA_MATTERMOST_URL)
+            ->setCredentials(TADAA_MATTERMOST_LOGIN, TADAA_MATTERMOST_PASSWORD);
+    $api = ApiClient::configure($configurator);
+    return $api;
+}
+
+/**
+ * OAuth2 <-> Mattermost
+ */
+function tadaa_mattermost_oauth2_server_user_claims_alter($context) {
+    $claims = &$context['claims'];
+    $account = $context['account'];
+    $requested_scopes = $context['requested_scopes'];
+\Drupal::logger('tadaa_mattermost')->warning(t('top!'));
+\Drupal::logger('tadaa_mattermost')->warning(print_r($requested_scopes,true));
+
+    // Depuis : https://github.com/Crivaledaz/Mattermost-LDAP
+    // Here is the patch for Mattermost 4.4 and older. Gitlab has changed the JSON output of oauth service. Many data are not used by Mattermost, but there is a stack error if we delete them. That's the reason why date and many parameters are null or empty.
+    // "state" => "active", "avatar_url" => "", "web_url" => "", "created_at" => "0000-00-00T00:00:00.000Z", 
+    // "bio" => null, "location" => null, "skype" => "", "linkedin" => "", "twitter" => "", "website_url" => "",
+    //  "organization" => null, "last_sign_in_at" => "0000-00-00T00:00:00.000Z", "confirmed_at" => "0000-00-00T00:00:00.000Z", 
+    //  "last_activity_on" => null, "email" => $data['mail'], "theme_id" => 1, "color_scheme_id" => 1, 
+    //  "projects_limit" => 100000, "current_sign_in_at" => "0000-00-00T00:00:00.000Z",
+    //   "identities" => array(array("provider" => "ldapmain", "extern_uid" => $data['dn'])), 
+    //   "can_create_group" => true, "can_create_project" => true, "two_factor_enabled" => false, 
+    //   "external" => false, "shared_runners_minutes_limit" => null);
+    if (in_array('mattermost', $requested_scopes)) {
+        // Pour Mattermost
+        \Drupal::logger('tadaa_base')->warning("Connexion SSO Mattermost pour " . $account->getAccountName());
+        $claims['id'] = $account->id() + 0;  // eq authdata
+        $claims['username'] = _tadaa_mattermost_userGetMattermostName($account->getAccountName());
+        $claims['name'] = $account->getDisplayName(); // eq firstname
+        $claims['email'] = $account->getEmail();
+    }
+}
+
+/**
+ * Préparation du groupe
+ */
+function tadaa_mattermost_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+    if ($entity->getEntityTypeId() == "group" && $entity->bundle() == "salon_des_familles") {
+        // Vérifier si "field_ouvre_un_salon" est ouvert; et si le machine name est vide => on le créé
+        if ($entity->field_ouvre_un_salon->value && $entity->field_nom_machine->isEmpty()) {
+            $entity->field_nom_machine = _tadaa_mattermost_getMachineName($entity->label());
+        }
+    }
+}
+
+/**
+ * Création / modification d'un utilisateur : association avec Mattermost
+ * - si nouveau (basé sur un champ MattermostID ou Email) => création sur Mattermost
+ * - si existant : mise à jour du/des groupe(s) basé sur le terme "Famille" associé à l'utilisateur
+ * - gestion des droits <-> Drupal / Mattermost (pour admin de groupe = rôle éditeur par exemple)
+ */
+function tadaa_mattermost_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
+    if ($entity->getEntityTypeId() == "user") {
+        _tadaa_mattermost_on_new_user($entity, 'MODIF');
+    }
+    // Rôle
+    if ($entity->getEntityTypeId() == "group") {
+        _tadaa_mattermost_on_new_group($entity);
+    }
+}
+
+function tadaa_mattermost_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
+    // Utilisateur
+    if ($entity->getEntityTypeId() == "user") {
+        _tadaa_mattermost_on_new_user($entity, 'NEW');
+    }
+    // Rôle
+    if ($entity->getEntityTypeId() == "group") {
+        _tadaa_mattermost_on_new_group($entity);
+    }
+}
+
+function tadaa_mattermost_entity_delete(Drupal\Core\Entity\EntityInterface $entity) {
+    // Utilisateur
+    if ($entity->getEntityTypeId() == "user") {
+        // _tadaa_mattermost_on_new_user($entity, 'DELETE');
+    }
+    // Rôle
+    if ($entity->getEntityTypeId() == "user_role") {
+        // 09/04 _tadaa_mattermost_delete_role($entity);
+    }
+}
+
+/**
+ * Création + modification d'un utilisateur : 
+ *  - impossible de modifier username
+ *  - vérifier si n'existe pas déjà (email) dans Mattermost
+ * @todo :
+ * Création / modification d'un rôle :
+ *  - choisir si le rôle créé une équipe ou non (à la création)
+ *  - indiquer si le rôle est associé à une équipe sur Mattermost
+ *  - dans ce dernier cas : ne pas pouvoir modifier le nom de l'équipe
+ *  - ajout d'une fonction de validation : possibilité de créé l'équipe ou pas (vérif. si existe déjà + si non utilisable + caractères limités min 2 et max 15 + remplacer _ par -)
+ * @param type $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param type $form_id
+ */
+function tadaa_mattermost_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    /** USER FORMS * */
+    if ("user_form" == $form_id) {
+        // Si modification : username disabled
+        $form['account']['name']['#access'] = false;
+    }
+    // Véirifier présence de l'email dans Mattermost
+    if ($form_id == "user_register_form") {
+        $form['#validate'][] = '_tadaa_mattermost_verifier_username';
+    }
+    // Vérifier présence de l'username dans Mattermost
+    if ($form_id == "user_register_form" || "user_form" == $form_id) {
+        $form['#validate'][] = '_tadaa_mattermost_verifier_email';
+    }
+    /** GROUP FORMS
+      ne pas autoriser à décocher "field_ouvre_un_salon" dans le formulaire
+     */
+    if ($form_id == "group_salon_des_familles_edit_form") {
+        $group = $form_state->getformObject()->getEntity();
+        if ($group->field_ouvre_un_salon->value) {
+            $form['field_ouvre_un_salon']['#disabled'] = true;
+        }
+    }
+}
+
+/**
+ * Empêcher l'enregistrement d'un utilisateur si email ou uid déjà existant dans Mattermost
+ */
+function _tadaa_mattermost_verifier_username($form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+    $username = $values['name'] ?? '';
+    if (!$username) {
+        $form_state->setErrorByName('name', t('Merci d\'entrer un nom d\'utilisateur ...'));
+    }
+    _tadaa_mattermost_verifier('name', $username, $form_state);
+}
+
+function _tadaa_mattermost_verifier_email($form, FormStateInterface $form_state) {
+    $user = $form_state->getformObject()->getEntity();
+    $values = $form_state->getValues();
+    $email = $values['mail'] ?? '';
+    if (!$email) {
+        $form_state->setErrorByName('email', t('Merci d\'entrer un email ...'));
+    } else if (!$user || $user->getEmail() != $email) {
+        // Nouvel email, on vérifie
+        _tadaa_mattermost_verifier('mail', $email, $form_state);
+    }
+}
+
+function _tadaa_mattermost_verifier($quoi, $valeur, FormStateInterface $form_state) {
+    $api = _mm_get_api();
+    $deja_pris = true;
+    try {
+        if ($quoi == "mail") {
+            $user = $api->users()->getUserByEmail($valeur);
+        } else {
+            $user = $api->users()->getUserByUsername(_tadaa_mattermost_userGetMattermostName($valeur));
+        }
+    } catch (Exception $e) {
+        $deja_pris = false;
+        /*
+          if ($e->getError()->getId() == "store.sql_user.missing_account.const" || $e->getError()->getId() == "store.sql_user.get_by_username.app_error") {
+          // OK vide !
+          } else {
+          dpm($e->getError());
+          $form_state->setErrorByName($quoi, t('Erreur à la vérification de l\'utilisateur sur Mattermost...'));
+          }
+         */
+    }
+    // Déjà présent !
+    if ($deja_pris) {
+        if ('mail' == $quoi) {
+            $form_state->setErrorByName($quoi, t('Cet email est déjà pris ...'));
+        } else {
+            $form_state->setErrorByName('name', t('Ce nom est déjà pris ...'));
+        }
+    }
+}
+
+/**
+ * Création / modification d'un utilisateur => création / modification dans Mattermost
+ * @param Drupal\Core\Entity\EntityInterface $entity
+ */
+function _tadaa_mattermost_on_new_user(Drupal\Core\Entity\EntityInterface $entity, $action = "NEW") {
+    $api = _mm_get_api();
+    
+
+    // Get MM Username
+    $username = _tadaa_mattermost_userGetMattermostName($entity->getAccountName());
+    
+    try {
+        $user = $api->users()->getUserByUsername($username);
+    } catch (Exception $e) {
+        if($e->getCode() == 400) {
+            // User Absent
+            $action = "NEW";
+        }
+    }
+    
+
+    // On a vérifié si existe dans Mattermost via le formulaire de validation avant
+    // Création / modification
+    if ('NEW' == $action) {
+        // Création de l'utilisateur
+        $r = $api->users()->createUser(
+                [
+                    'email' => $entity->getEmail(),
+                    'username' => $username,
+                    'first_name' => $entity->getDisplayName(),
+                    'auth_service' => "gitlab",
+                    'auth_data' => strval($entity->id()),
+                    'email_verified' => 1,
+                ]
+        );
+        // $r = $api->users()->getUserById('7s3dk4qzabf95xx7izb3p8bq3w');
+        \Drupal::logger('tadaa_base')->notice("Création de compte sur Mattermost" . print_r($r, true));
+        $userId = $r->getId();
+    } else {
+        // Modification  -> ne fonctionne pas ..
+        /*$user = $api->users()->getUserByUsername($username);
+        $userId = $user->getId();
+        $r = $api->users()->updateUser($userId,
+                [
+                    'id' => $userId,
+                    'email' => $entity->getEmail(),
+                    'username' => $username,
+                    'first_name' => $entity->getDisplayName(),
+                    'auth_service' => "gitlab",
+                    'email_verified' => 1,
+                    'auth_data' => strval($entity->id()),
+                    'create_at' => $user->getCreateAt(),
+                ]
+        );*/
+    }
+
+    /**
+     * Si fait partie de certains "roles", alors associé directement à certains groupes
+     * pour le moment "à la main" : groupe 3 = TChat des Pros = Abonné
+     */
+    $roles = $entity->getRoles();
+    if (in_array("abonne", $roles)) {
+        $group = \Drupal::service("entity_type.manager")->getStorage("group")->load(3);
+        $group->addMember($entity);
+        _tadaa_mattermost_on_new_group($group, $entity);
+        drupal_set_message("Ajouté au groupe TChat des Pros");
+    }
+}
+
+/**
+ * Equipe existe ?
+ */
+function _tadaa_mattermost_team_exists($teamId) {
+    $api = _mm_get_api();
+    try {
+        $team = $api->teams()->getTeamByName($teamId);
+    } catch (Exception $e) {
+        if ($e->getError()->getId() == "store.sql_team.get_by_name.missing.app_error") {
+            return -1;
+        }
+        // Il faudrait retourner une erreur ... mais bon pour le moment on laisse tel quel
+        return -2;
+    }
+    return TRUE;
+}
+
+/**
+ * Récupérer le nom d'une team Mattermost depuis celle de Drupal et vice-versa
+ *  - en pratique : remplacer _ par - pour Mattermost, et inversement pour Drupal
+ */
+function _tadaa_mattermost_teamGetMattermostName($drupalName) {
+    return(str_replace('_', '-', $drupalName));
+}
+
+function _tadaa_mattermost_teamGetDrupalName($mmName) {
+    return(str_replace('-', '_', $mmName));
+}
+
+/**
+ * Idem pour l'utilisateur : remplacer @ par _at_
+ * @param type $drupalUsername
+ */
+function _tadaa_mattermost_userGetMattermostName($drupalUsername) {
+    return(strtolower(substr(preg_replace('@[^a-z0-9A-Z_.\-]+@', '_', str_replace('@', '_at_', $drupalUsername)), 0, 22)));
+}
+
+/**
+ * Récupérer les groupes d'un utilisateur
+ */
+function _tadaa_mattermost_get_groups($userId) {
+    /* Récupérer les Groupes dont dépend l'utilisateur */
+    $out = [];
+    // Uid ou User
+    if (is_int($userId)) {
+        $u = \Drupal\user\Entity\User::load($userId);
+    } else {
+        $u = $userId;
+    }
+    foreach ($u->entitygroupfield as $gf) {
+        $group = $gf->entity->getGroup();
+        if ($group->field_ouvre_un_salon->value && !$group->field_nom_machine->isEmpty()) {
+            $out[] = $group->field_nom_machine->value;
+        }
+    }
+    return $out;
+}
+
+/**
+ * Création / modification d'un terme Famille : création / modification d'une Team sur Mattermost (pas de suppression ?)
+ */
+function _tadaa_mattermost_on_new_group($group, $specificUser = NULL) {
+    /** Groupe = Salon ? * */
+    if ((!$group->field_ouvre_un_salon->value) || $group->field_nom_machine->isEmpty()) {
+        return;
+    }
+    $teamName = _tadaa_mattermost_teamGetMattermostName($group->field_nom_machine->value);
+    $api = _mm_get_api();
+
+    /** Création d'une équipe ? * */
+    if (_tadaa_mattermost_team_exists($teamName) === -1) {
+        // Vide, super !
+        $api = _mm_get_api();
+        $r = $api->teams()->createTeam(
+                [
+                    'name' => $teamName,
+                    'display_name' => $group->label(),
+                    'type' => 'I'  // invite only
+        ]);
+        \Drupal::logger('tadaa_base')->notice("Création d'une équipe sur Mattermost" . print_r($r, true));
+    }
+
+    /** Association des membres ! * */
+    //$users = [];
+    if (_tadaa_mattermost_team_exists($teamName) === TRUE) {
+        if ($specificUser === NULL) {
+            $memberships = $group->getMembers();
+        } else {
+            $membership = $group->getMember($specificUser);
+            $memberships = [$membership];
+        }
+        foreach ($memberships as $membership) {
+            // Récupérer l'ID User sur Matermost
+            $user = $membership->getUser();
+            $username = _tadaa_mattermost_userGetMattermostName($user->getAccountName());
+            $mmUser = $api->users()->getUserByUsername($username);
+            $userId = $mmUser->getId();
+            // A ajouter
+            try {
+                $team = $api->teams()->getTeamByName($teamName);
+                $api->teams()->addTeamMember($team->getId(), $userId);
+            } catch (Exception $e) {
+                \Drupal::logger('tadaa_base')->notice("Problème association user $userId sur Mattermost" . print_r($e->getError(), true));
+            }
+        }
+    }
+}
+
+/* Récupérer les Groupes dont dépend l'utilisateur * /
+  $equipes_maintenant = _tadaa_mattermost_get_groups($entity);
+  if ($entity->original) {
+  $equipes_before = _tadaa_mattermost_get_groups($entity->original);
+  foreach ($equipes_before as $equipe_before) {
+  if (!in_array($equipe_before, $equipes_maintenant)) {
+  // A supprimer
+  if (_tadaa_mattermost_team_exists($equipe_before) === TRUE) {
+  try {
+  $teamName = _tadaa_mattermost_teamGetMattermostName($equipe_before);
+  $team = $api->teams()->getTeamByName($teamName);
+  $api->teams()->removeTeamMember($team->getId(), $userId);
+  } catch (Exception $e) {
+
+  }
+  }
+  }
+  }
+  } else {
+  $equipes_before = [];
+  }
+  foreach ($equipes_maintenant as $equipe_maintenant) {
+  if (!in_array($equipe_maintenant, $equipes_before)) {
+  // A ajouter
+  if (_tadaa_mattermost_team_exists($equipe_maintenant) === TRUE) {
+  try {
+  $teamName = _tadaa_mattermost_teamGetMattermostName($equipe_maintenant);
+  $team = $api->teams()->getTeamByName($teamName);
+  $api->teams()->addTeamMember($team->getId(), $userId);
+  } catch (Exception $e) {
+
+  }
+  }
+  }
+  }} */
+
+
+/*
+  function _tadaa_mattermost_delete_role($role) {
+  $teamName = _tadaa_mattermost_teamGetMattermostName($role->id());
+  if (_tadaa_mattermost_team_exists($teamName) === TRUE) {
+  $api = _mm_get_api();
+  $team = $api->teams()->getTeamByName($teamName);
+  $r = $api->teams()->deleteTeam($team->getId());
+  }
+  }
+ */
+
+/**
+ * Enregistrer un Machine Name pour les groupes
+ */
+function _tadaa_mattermost_getMachineName($string) {
+    $transliterated = \Drupal::transliteration()->transliterate($string, LanguageInterface::LANGCODE_DEFAULT, '_');
+    $transliterated = mb_strtolower($transliterated);
+
+    $transliterated = preg_replace('@[^a-z0-9_.]+@', '_', $transliterated);
+
+    return $transliterated;
+}

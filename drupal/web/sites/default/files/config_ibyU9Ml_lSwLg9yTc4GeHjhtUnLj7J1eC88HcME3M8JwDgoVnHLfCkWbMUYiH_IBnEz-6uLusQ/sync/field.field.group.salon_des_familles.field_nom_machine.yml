@@ -1,0 +1,19 @@
+uuid: a8c16fbc-fe22-4dfe-957f-c4660d758052
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_nom_machine
+    - group.type.salon_des_familles
+id: group.salon_des_familles.field_nom_machine
+field_name: field_nom_machine
+entity_type: group
+bundle: salon_des_familles
+label: 'Nom machine'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

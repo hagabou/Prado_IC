@@ -1,0 +1,22 @@
+uuid: bb0554c9-d96a-4ba0-9154-4d02b48a2bf1
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: GzdeSqWzc0qGmGiFuP6_C3r6CjisRdgHwNZYehLLGjg
+id: tadaa_cai_theme_local_tasks
+theme: tadaa_cai_theme
+region: content
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

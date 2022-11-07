@@ -1,0 +1,12 @@
+uuid: dabb7380-8976-41ec-b843-86e3f99b0d9f
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: JE5Jy0k4oKYei8F0z2LBKWAe5fgf-x-zvxNH_CeD4cQ
+id: paragraph.token
+label: 'Jeton (token)'
+targetEntityType: paragraph
+cache: true

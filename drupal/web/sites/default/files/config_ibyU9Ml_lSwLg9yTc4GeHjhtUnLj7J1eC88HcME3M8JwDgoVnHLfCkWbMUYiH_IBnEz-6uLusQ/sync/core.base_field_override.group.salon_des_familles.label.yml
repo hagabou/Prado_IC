@@ -1,0 +1,18 @@
+uuid: 30ef684e-e58e-4124-b3f5-da1e00eb0e95
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+id: group.salon_des_familles.label
+field_name: label
+entity_type: group
+bundle: salon_des_familles
+label: 'Nom du groupe'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

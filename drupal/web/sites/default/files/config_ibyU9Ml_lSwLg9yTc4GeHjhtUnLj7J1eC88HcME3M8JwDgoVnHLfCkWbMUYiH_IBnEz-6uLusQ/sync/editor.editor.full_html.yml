@@ -1,0 +1,89 @@
+uuid: 1dda74ee-f2bd-449b-a523-2d039e9e0e6e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor
+    - editor_file
+third_party_settings:
+  editor_file:
+    status: true
+    scheme: public
+    directory: inline-files
+    extensions: 'txt rdf zip pdf doc docx ods odt ppt pptx odp xls xlsx pub pubx jpg jpeg png gif'
+    max_size: ''
+_core:
+  default_config_hash: 967ijj7p6i7rwrYl7r08WQFeCY_c23YAh0h8u-w_CXM
+format: full_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Strike
+            - Superscript
+            - Subscript
+            - '-'
+            - RemoveFormat
+            - '-'
+            - JustifyLeft
+            - JustifyRight
+            - JustifyCenter
+            - JustifyBlock
+        -
+          name: Linking
+          items:
+            - Linkit
+            - DrupalLink
+            - DrupalUnlink
+            - '-'
+            - DrupalFile
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+            - '-'
+            - SpecialChar
+        -
+          name: Media
+          items:
+            - '-'
+            - Blockquote
+            - DrupalImage
+            - Table
+            - HorizontalRule
+        -
+          name: 'Block Formatting'
+          items:
+            - Format
+            - Styles
+        -
+          name: Tools
+          items:
+            - ShowBlocks
+            - Source
+            - PasteFromWord
+            - Maximize
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: "a.btn|Gros bouton (violet)\r\na.btn-secondary|Gros bouton (rouge)\r\na.btn-third|Gros bouton (jaune)\r\na.btn_big_bottom|Très gros bouton bas de page\r\np.blanc|Texte en blanc\r\nh3.blanc|Titre en blanc\r\np.surligner|Surligner\r\np.intro|Introduction\r\np.misenavant|Mise en avant\r\nspan.tarif|Tarif\r\nspan.date|Date\r\nspan.rouge|Texte rouge (parents)\r\nspan.violet|Texte violet (pros)\r\nspan.jaune|Texte jaune (cai)\r\nul.liste_coches|Liste avec coches\r\ndiv.blocviolet|Bloc violet\r\ndiv.blocrouge|Bloc rouge\r\ndiv.blocgris|Bloc gris\r\np.decalage|Décaler paragraphe\r\n"
+    linkit:
+      linkit_profile: general
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

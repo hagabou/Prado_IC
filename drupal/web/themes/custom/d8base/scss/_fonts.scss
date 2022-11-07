@@ -1,0 +1,115 @@
+/*
+    Created on : 04 février 2021
+    Author     : camille
+*/
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-Regular.eot');
+    src: local('Raleway'), local('Raleway-Regular'),
+        url('../fonts/Raleway-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Raleway-Regular.woff2') format('woff2'),
+        url('../fonts/Raleway-Regular.woff') format('woff'),
+        url('../fonts/Raleway-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-Medium.eot');
+    src: local('Raleway Medium'), local('Raleway-Medium'),
+        url('../fonts/Raleway-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Raleway-Medium.woff2') format('woff2'),
+        url('../fonts/Raleway-Medium.woff') format('woff'),
+        url('../fonts/Raleway-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-Bold.eot');
+    src: local('Raleway Bold'), local('Raleway-Bold'),
+        url('../fonts/Raleway-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Raleway-Bold.woff2') format('woff2'),
+        url('../fonts/Raleway-Bold.woff') format('woff'),
+        url('../fonts/Raleway-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-ExtraBold.eot');
+    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'),
+        url('../fonts/Raleway-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Raleway-ExtraBold.woff2') format('woff2'),
+        url('../fonts/Raleway-ExtraBold.woff') format('woff'),
+        url('../fonts/Raleway-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-Italic.eot');
+    src: local('Raleway Italic'), local('Raleway-Italic'),
+        url('../fonts/Raleway-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Raleway-Italic.woff2') format('woff2'),
+        url('../fonts/Raleway-Italic.woff') format('woff'),
+        url('../fonts/Raleway-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-MediumItalic.eot');
+    src: local('Raleway Medium Italic'), local('Raleway-MediumItalic'),
+        url('../fonts/Raleway-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Raleway-MediumItalic.woff2') format('woff2'),
+        url('../fonts/Raleway-MediumItalic.woff') format('woff'),
+        url('../fonts/Raleway-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-ExtraBoldItalic.eot');
+    src: local('Raleway ExtraBold Italic'), local('Raleway-ExtraBoldItalic'),
+        url('../fonts/Raleway-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Raleway-ExtraBoldItalic.woff2') format('woff2'),
+        url('../fonts/Raleway-ExtraBoldItalic.woff') format('woff'),
+        url('../fonts/Raleway-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: url('../fonts/DancingScript-Regular.eot');
+    src: local('Dancing Script Regular'), local('DancingScript-Regular'),
+        url('../fonts/DancingScript-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/DancingScript-Regular.woff2') format('woff2'),
+        url('../fonts/DancingScript-Regular.woff') format('woff'),
+        url('../fonts/DancingScript-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: url('../fonts/DancingScript-Bold.eot');
+    src: local('Dancing Script Bold'), local('DancingScript-Bold'),
+        url('../fonts/DancingScript-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/DancingScript-Bold.woff2') format('woff2'),
+        url('../fonts/DancingScript-Bold.woff') format('woff'),
+        url('../fonts/DancingScript-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+

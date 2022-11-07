@@ -1,0 +1,21 @@
+uuid: 9f6a264f-7350-4e32-abc6-c4c30c171017
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_public
+    - node.type.slider
+  module:
+    - options
+id: node.slider.field_public
+field_name: field_public
+entity_type: node
+bundle: slider
+label: Public
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

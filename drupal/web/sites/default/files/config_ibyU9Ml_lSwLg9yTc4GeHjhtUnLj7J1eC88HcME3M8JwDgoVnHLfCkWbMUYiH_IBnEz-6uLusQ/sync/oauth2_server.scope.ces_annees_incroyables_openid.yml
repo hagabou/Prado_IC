@@ -1,0 +1,8 @@
+uuid: 67d168c7-ccdb-4814-8632-2eedfe53552e
+langcode: en
+status: true
+dependencies: {  }
+id: ces_annees_incroyables_openid
+scope_id: openid
+server_id: ces_annees_incroyables
+description: 'Know who you are on Drush Site-Install'

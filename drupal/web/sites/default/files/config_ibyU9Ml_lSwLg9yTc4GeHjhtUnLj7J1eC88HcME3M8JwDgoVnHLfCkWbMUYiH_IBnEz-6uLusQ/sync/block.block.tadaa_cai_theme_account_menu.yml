@@ -1,0 +1,27 @@
+uuid: 4285e3ab-e624-4191-972a-17dc579bec0f
+langcode: fr
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: lp_9jG6_x-J2FD-uVf77Dhn1xr5eZ2fMqj-EM2fiRAo
+id: tadaa_cai_theme_account_menu
+theme: tadaa_cai_theme
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

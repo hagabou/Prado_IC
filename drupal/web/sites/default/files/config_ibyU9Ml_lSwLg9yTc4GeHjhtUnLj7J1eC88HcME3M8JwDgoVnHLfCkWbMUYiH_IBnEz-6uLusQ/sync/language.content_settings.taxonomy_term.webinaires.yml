@@ -1,0 +1,11 @@
+uuid: f543dc07-99a3-43af-af0f-edf68f4cae68
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.webinaires
+id: taxonomy_term.webinaires
+target_entity_type_id: taxonomy_term
+target_bundle: webinaires
+default_langcode: site_default
+language_alterable: false

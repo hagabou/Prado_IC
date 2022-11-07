@@ -1,0 +1,32 @@
+scanner_mode: true
+scanner_wholeword: true
+scanner_regex: false
+scanner_published: false
+scanner_pathauto: false
+scanner_language: all
+enabled_content_types:
+  'node:article': 'node:article'
+  'node:evenement': 'node:evenement'
+  'node:page': 'node:page'
+  'node:ressources': 'node:ressources'
+  'node:slider': 'node:slider'
+  'node:temoignage': 'node:temoignage'
+  'paragraph:bloc_colore': 'paragraph:bloc_colore'
+  'paragraph:bloc_drupal': 'paragraph:bloc_drupal'
+  'paragraph:erl_section': 'paragraph:erl_section'
+  'paragraph:formulaire': 'paragraph:formulaire'
+  'paragraph:from_library': 'paragraph:from_library'
+  'paragraph:image': 'paragraph:image'
+  'paragraph:ligne': 'paragraph:ligne'
+fields_of_selected_content_type:
+  'node:article:body': 'node:article:body'
+  'node:evenement:body': 'node:evenement:body'
+  'node:page:body': 'node:page:body'
+  'node:ressources:body': 'node:ressources:body'
+  'node:slider:field_accroche': 'node:slider:field_accroche'
+  'node:temoignage:body': 'node:temoignage:body'
+  'paragraph:bloc_colore:field_corps_de_texte': 'paragraph:bloc_colore:field_corps_de_texte'
+  'paragraph:ligne:field_corps_de_texte': 'paragraph:ligne:field_corps_de_texte'
+_core:
+  default_config_hash: m3e3lR0iNbau3eUO2RZya6iS06zv02m1JJe8X-PZuhk
+langcode: fr

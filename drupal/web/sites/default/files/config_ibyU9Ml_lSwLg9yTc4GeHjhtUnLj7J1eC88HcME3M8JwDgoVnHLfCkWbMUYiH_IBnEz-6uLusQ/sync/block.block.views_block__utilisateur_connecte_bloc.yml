@@ -1,0 +1,31 @@
+uuid: 28a21cdd-e6d9-469d-9d93-f9d1abad9cf2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.utilisateur_connecte
+  module:
+    - system
+    - views
+  theme:
+    - d8base
+id: views_block__utilisateur_connecte_bloc
+theme: d8base
+region: espace_pro_connexion
+weight: -14
+provider: null
+plugin: 'views_block:utilisateur_connecte-bloc'
+settings:
+  id: 'views_block:utilisateur_connecte-bloc'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "/espace-pro\r\n/espace-pro/*\r\n/salon-des-familles"
+    negate: false
+    context_mapping: {  }
