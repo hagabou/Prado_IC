@@ -764,11 +764,11 @@ $settings['entity_update_backup'] = TRUE;
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 $databases['default']['default'] = array (
-  'database' => 'ybhv0888',
+  'database' => 'ybhv0888_test_ic',
   'username' => 'ybhv0888_haga',
   'password' => 'Ui&6?Ah!?h4)',
   'prefix' => '',
-  'host' => 'www.ybhv0888.odns.fr',
+  'host' => 'localhost',
   'port' => '',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
