@@ -1,0 +1,11 @@
+name: CAS Server
+description: 'Provides a CAS Server implementation that runs on Drupal.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: cas_server.settings
+
+# Information added by Drupal.org packaging script on 2021-12-03
+version: '8.x-1.0-beta3'
+project: 'cas_server'
+datestamp: 1638541524

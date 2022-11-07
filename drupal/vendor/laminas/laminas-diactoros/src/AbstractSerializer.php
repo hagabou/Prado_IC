@@ -1,17 +1,22 @@
 <?php
 
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-diactoros for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-diactoros/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-diactoros/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Diactoros;
 
 use Psr\Http\Message\StreamInterface;
+use UnexpectedValueException;
 
 use function array_pop;
 use function implode;
+use function ltrim;
 use function preg_match;
 use function sprintf;
 use function str_replace;
-use function trim;
 use function ucwords;
 
 /**
@@ -21,9 +26,9 @@ use function ucwords;
  */
 abstract class AbstractSerializer
 {
-    public const CR  = "\r";
-    public const EOL = "\r\n";
-    public const LF  = "\n";
+    const CR  = "\r";
+    const EOL = "\r\n";
+    const LF  = "\n";
 
     /**
      * Retrieve a single line from the stream.
@@ -31,10 +36,12 @@ abstract class AbstractSerializer
      * Retrieves a line from the stream; a line is defined as a sequence of
      * characters ending in a CRLF sequence.
      *
-     * @throws Exception\DeserializationException if the sequence contains a CR
-     *     or LF in isolation, or ends in a CR.
+     * @param StreamInterface $stream
+     * @return string
+     * @throws UnexpectedValueException if the sequence contains a CR or LF in
+     *     isolation, or ends in a CR.
      */
-    protected static function getLine(StreamInterface $stream) : string
+    protected static function getLine(StreamInterface $stream)
     {
         $line    = '';
         $crFound = false;
@@ -48,12 +55,12 @@ abstract class AbstractSerializer
 
             // CR NOT followed by LF
             if ($crFound && $char !== self::LF) {
-                throw Exception\DeserializationException::forUnexpectedCarriageReturn();
+                throw new UnexpectedValueException('Unexpected carriage return detected');
             }
 
             // LF in isolation
             if (! $crFound && $char === self::LF) {
-                throw Exception\DeserializationException::forUnexpectedLineFeed();
+                throw new UnexpectedValueException('Unexpected line feed detected');
             }
 
             // CR found; do not append
@@ -68,7 +75,7 @@ abstract class AbstractSerializer
 
         // CR found at end of stream
         if ($crFound) {
-            throw Exception\DeserializationException::forUnexpectedEndOfHeaders();
+            throw new UnexpectedValueException("Unexpected end of headers");
         }
 
         return $line;
@@ -82,9 +89,11 @@ abstract class AbstractSerializer
      * - The first is an array of headers
      * - The second is a StreamInterface containing the body content
      *
-     * @throws Exception\DeserializationException For invalid headers.
+     * @param StreamInterface $stream
+     * @return array
+     * @throws UnexpectedValueException For invalid headers.
      */
-    protected static function splitStream(StreamInterface $stream) : array
+    protected static function splitStream(StreamInterface $stream)
     {
         $headers       = [];
         $currentHeader = false;
@@ -95,21 +104,21 @@ abstract class AbstractSerializer
                 if (! isset($headers[$currentHeader])) {
                     $headers[$currentHeader] = [];
                 }
-                $headers[$currentHeader][] = trim($matches['value'], "\t ");
+                $headers[$currentHeader][] = ltrim($matches['value']);
                 continue;
             }
 
             if (! $currentHeader) {
-                throw Exception\DeserializationException::forInvalidHeader();
+                throw new UnexpectedValueException('Invalid header detected');
             }
 
             if (! preg_match('#^[ \t]#', $line)) {
-                throw Exception\DeserializationException::forInvalidHeaderContinuation();
+                throw new UnexpectedValueException('Invalid header continuation');
             }
 
             // Append continuation to last header value found
             $value = array_pop($headers[$currentHeader]);
-            $headers[$currentHeader][] = $value . ' ' . trim($line, "\t ");
+            $headers[$currentHeader][] = $value . ltrim($line);
         }
 
         // use RelativeStream to avoid copying initial stream into memory
@@ -119,9 +128,10 @@ abstract class AbstractSerializer
     /**
      * Serialize headers to string values.
      *
-     * @psalm-param array<string, string[]> $headers
+     * @param array $headers
+     * @return string
      */
-    protected static function serializeHeaders(array $headers) : string
+    protected static function serializeHeaders(array $headers)
     {
         $lines = [];
         foreach ($headers as $header => $values) {
@@ -138,8 +148,9 @@ abstract class AbstractSerializer
      * Filter a header name to wordcase
      *
      * @param string $header
+     * @return string
      */
-    protected static function filterHeader($header) : string
+    protected static function filterHeader($header)
     {
         $filtered = str_replace('-', ' ', $header);
         $filtered = ucwords($filtered);

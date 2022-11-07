@@ -1,16 +1,27 @@
 <?php
 
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-diactoros for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-diactoros/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-diactoros/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Diactoros;
 
-use Laminas\Diactoros\ServerRequestFilter\FilterServerRequestInterface;
-use Laminas\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
-use Psr\Http\Message\ServerRequestFactoryInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use InvalidArgumentException;
+use Psr\Http\Message\UploadedFileInterface;
+use stdClass;
+use UnexpectedValueException;
 
+use function array_change_key_case;
 use function array_key_exists;
+use function explode;
+use function implode;
+use function is_array;
 use function is_callable;
+use function strtolower;
+
+use const CASE_LOWER;
 
 /**
  * Class for marshaling a request object from the current PHP environment.
@@ -20,7 +31,7 @@ use function is_callable;
  * @copyright Copyright (c) 2005-2015 Laminas (https://www.zend.com)
  * @license   https://getlaminas.org/license/new-bsd New BSD License
  */
-class ServerRequestFactory implements ServerRequestFactoryInterface
+abstract class ServerRequestFactory
 {
     /**
      * Function to use to get apache request headers; present only to simplify mocking.
@@ -44,23 +55,16 @@ class ServerRequestFactory implements ServerRequestFactoryInterface
      * @param array $body $_POST superglobal
      * @param array $cookies $_COOKIE superglobal
      * @param array $files $_FILES superglobal
-     * @param null|FilterServerRequestInterface $requestFilter If present, the
-     *     generated request will be passed to this instance and the result
-     *     returned by this method. When not present, a default instance of
-     *     FilterUsingXForwardedHeaders is created, using the `trustReservedSubnets()`
-     *     constructor.
      * @return ServerRequest
+     * @throws InvalidArgumentException for invalid file values
      */
     public static function fromGlobals(
         array $server = null,
         array $query = null,
         array $body = null,
         array $cookies = null,
-        array $files = null,
-        ?FilterServerRequestInterface $requestFilter = null
-    ) : ServerRequest {
-        $requestFilter = $requestFilter ?: FilterUsingXForwardedHeaders::trustReservedSubnets();
-
+        array $files = null
+    ) {
         $server = normalizeServer(
             $server ?: $_SERVER,
             is_callable(self::$apacheRequestHeaders) ? self::$apacheRequestHeaders : null
@@ -72,10 +76,10 @@ class ServerRequestFactory implements ServerRequestFactoryInterface
             $cookies = parseCookieHeader($headers['cookie']);
         }
 
-        return $requestFilter(new ServerRequest(
+        return new ServerRequest(
             $server,
             $files,
-            self::marshalUriFromSapi($server, $headers),
+            marshalUriFromSapi($server, $headers),
             marshalMethodFromSapi($server),
             'php://input',
             $headers,
@@ -83,228 +87,155 @@ class ServerRequestFactory implements ServerRequestFactoryInterface
             $query ?: $_GET,
             $body ?: $_POST,
             marshalProtocolVersionFromSapi($server)
-        ));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function createServerRequest(string $method, $uri, array $serverParams = []) : ServerRequestInterface
-    {
-        $uploadedFiles = [];
-
-        return new ServerRequest(
-            $serverParams,
-            $uploadedFiles,
-            $uri,
-            $method,
-            'php://temp'
         );
     }
 
     /**
-     * Marshal a Uri instance based on the values present in the $_SERVER array and headers.
+     * Access a value in an array, returning a default value if not found
      *
-     * @param array<string, string|list<string>> $headers
-     * @param array $server SAPI parameters
-     */
-    private static function marshalUriFromSapi(array $server, array $headers) : Uri
-    {
-        $uri = new Uri('');
-
-        // URI scheme
-        $https  = false;
-        if (array_key_exists('HTTPS', $server)) {
-            $https = self::marshalHttpsValue($server['HTTPS']);
-        } elseif (array_key_exists('https', $server)) {
-            $https = self::marshalHttpsValue($server['https']);
-        }
-
-        $uri = $uri->withScheme($https ? 'https' : 'http');
-
-        // Set the host
-        [$host, $port] = self::marshalHostAndPort($server, $headers);
-        if (! empty($host)) {
-            $uri = $uri->withHost($host);
-            if (! empty($port)) {
-                $uri = $uri->withPort($port);
-            }
-        }
-
-        // URI path
-        $path = self::marshalRequestPath($server);
-
-        // Strip query string
-        $path = explode('?', $path, 2)[0];
-
-        // URI query
-        $query = '';
-        if (isset($server['QUERY_STRING'])) {
-            $query = ltrim((string) $server['QUERY_STRING'], '?');
-        }
-
-        // URI fragment
-        $fragment = '';
-        if (strpos($path, '#') !== false) {
-            [$path, $fragment] = explode('#', $path, 2);
-        }
-
-        return $uri
-            ->withPath($path)
-            ->withFragment($fragment)
-            ->withQuery($query);
-    }
-
-    /**
-     * Marshal the host and port from the PHP environment.
-     *
-     * @param array<string, string|list<string>> $headers
-     * @return array{string, int|null} Array of two items, host and port,
-     *     in that order (can be passed to a list() operation).
-     */
-    private static function marshalHostAndPort(array $server, array $headers) : array
-    {
-        static $defaults = ['', null];
-
-        $host = self::getHeaderFromArray('host', $headers, false);
-        if ($host !== false) {
-            return self::marshalHostAndPortFromHeader($host);
-        }
-
-        if (! isset($server['SERVER_NAME'])) {
-            return $defaults;
-        }
-
-        $host = (string) $server['SERVER_NAME'];
-        $port = isset($server['SERVER_PORT']) ? (int) $server['SERVER_PORT'] : null;
-
-        if (! isset($server['SERVER_ADDR'])
-            || ! preg_match('/^\[[0-9a-fA-F\:]+\]$/', $host)
-        ) {
-            return [$host, $port];
-        }
-
-        // Misinterpreted IPv6-Address
-        // Reported for Safari on Windows
-        return self::marshalIpv6HostAndPort($server, $port);
-    }
-
-    /**
-     * @return array{string, int|null} Array of two items, host and port,
-     *     in that order (can be passed to a list() operation).
-     */
-    private static function marshalIpv6HostAndPort(array $server, ?int $port) : array
-    {
-        $host             = '[' . (string) $server['SERVER_ADDR'] . ']';
-        $port             = $port ?: 80;
-        $portSeparatorPos = strrpos($host, ':');
-
-        if (false === $portSeparatorPos) {
-            return [$host, $port];
-        }
-
-        if ($port . ']' === substr($host, $portSeparatorPos + 1)) {
-            // The last digit of the IPv6-Address has been taken as port
-            // Unset the port so the default port can be used
-            $port = null;
-        }
-        return [$host, $port];
-    }
-
-    /**
-     * Detect the path for the request
-     *
-     * Looks at a variety of criteria in order to attempt to autodetect the base
-     * request path, including:
-     *
-     * - IIS7 UrlRewrite environment
-     * - REQUEST_URI
-     * - ORIG_PATH_INFO
-     */
-    private static function marshalRequestPath(array $server) : string
-    {
-        // IIS7 with URL Rewrite: make sure we get the unencoded url
-        // (double slash problem).
-        $iisUrlRewritten = $server['IIS_WasUrlRewritten'] ?? null;
-        $unencodedUrl    = $server['UNENCODED_URL'] ?? '';
-        if ('1' === $iisUrlRewritten && is_string($unencodedUrl) && '' !== $unencodedUrl) {
-            return $unencodedUrl;
-        }
-
-        $requestUri = $server['REQUEST_URI'] ?? null;
-
-        if (is_string($requestUri)) {
-            return preg_replace('#^[^/:]+://[^/]+#', '', $requestUri);
-        }
-
-        $origPathInfo = $server['ORIG_PATH_INFO'] ?? '';
-        if (! is_string($origPathInfo) || '' === $origPathInfo) {
-            return '/';
-        }
-
-        return $origPathInfo;
-    }
-
-    /**
-     * @param mixed $https
-     */
-    private static function marshalHttpsValue($https) : bool
-    {
-        if (is_bool($https)) {
-            return $https;
-        }
-
-        if (! is_string($https)) {
-            throw new Exception\InvalidArgumentException(sprintf(
-                'SAPI HTTPS value MUST be a string or boolean; received %s',
-                gettype($https)
-            ));
-        }
-
-        return 'on' === strtolower($https);
-    }
-
-    /**
-     * @param string|list<string> $host
-     * @return array Array of two items, host and port, in that order (can be
-     *     passed to a list() operation).
-     */
-    private static function marshalHostAndPortFromHeader($host): array
-    {
-        if (is_array($host)) {
-            $host = implode(', ', $host);
-        }
-
-        $port = null;
-
-        // works for regname, IPv4 & IPv6
-        if (preg_match('|\:(\d+)$|', $host, $matches)) {
-            $host = substr($host, 0, -1 * (strlen($matches[1]) + 1));
-            $port = (int) $matches[1];
-        }
-
-        return [$host, $port];
-    }
-
-    /**
-     * Retrieve a header value from an array of headers using a case-insensitive lookup.
-     *
-     * @param array<string, string|list<string>> $headers Key/value header pairs
-     * @param mixed $default Default value to return if header not found
+     * @deprecated since 1.8.0; no longer used internally.
+     * @param string $key
+     * @param array $values
+     * @param mixed $default
      * @return mixed
      */
-    private static function getHeaderFromArray(string $name, array $headers, $default = null)
+    public static function get($key, array $values, $default = null)
     {
-        $header  = strtolower($name);
+        if (array_key_exists($key, $values)) {
+            return $values[$key];
+        }
+
+        return $default;
+    }
+
+    /**
+     * Search for a header value.
+     *
+     * Does a case-insensitive search for a matching header.
+     *
+     * If found, it is returned as a string, using comma concatenation.
+     *
+     * If not, the $default is returned.
+     *
+     * @deprecated since 1.8.0; no longer used internally.
+     * @param string $header
+     * @param array $headers
+     * @param mixed $default
+     * @return string
+     */
+    public static function getHeader($header, array $headers, $default = null)
+    {
+        $header  = strtolower($header);
         $headers = array_change_key_case($headers, CASE_LOWER);
-        if (! array_key_exists($header, $headers)) {
-            return $default;
+        if (array_key_exists($header, $headers)) {
+            $value = is_array($headers[$header]) ? implode(', ', $headers[$header]) : $headers[$header];
+            return $value;
         }
 
-        if (is_string($headers[$header])) {
-            return $headers[$header];
-        }
+        return $default;
+    }
 
-        return implode(', ', $headers[$header]);
+    /**
+     * Marshal the $_SERVER array
+     *
+     * Pre-processes and returns the $_SERVER superglobal.
+     *
+     * @deprected since 1.8.0; use Laminas\Diactoros\normalizeServer() instead.
+     * @param array $server
+     * @return array
+     */
+    public static function normalizeServer(array $server)
+    {
+        return normalizeServer(
+            $server ?: $_SERVER,
+            is_callable(self::$apacheRequestHeaders) ? self::$apacheRequestHeaders : null
+        );
+    }
+
+    /**
+     * Normalize uploaded files
+     *
+     * Transforms each value into an UploadedFileInterface instance, and ensures
+     * that nested arrays are normalized.
+     *
+     * @deprecated since 1.8.0; use \Laminas\Diactoros\normalizeUploadedFiles instead.
+     * @param array $files
+     * @return array
+     * @throws InvalidArgumentException for unrecognized values
+     */
+    public static function normalizeFiles(array $files)
+    {
+        return normalizeUploadedFiles($files);
+    }
+
+    /**
+     * Marshal headers from $_SERVER
+     *
+     * @deprecated since 1.8.0; use Laminas\Diactoros\marshalHeadersFromSapi().
+     * @param array $server
+     * @return array
+     */
+    public static function marshalHeaders(array $server)
+    {
+        return marshalHeadersFromSapi($server);
+    }
+
+    /**
+     * Marshal the URI from the $_SERVER array and headers
+     *
+     * @deprecated since 1.8.0; use Laminas\Diactoros\marshalUriFromSapi() instead.
+     * @param array $server
+     * @param array $headers
+     * @return Uri
+     */
+    public static function marshalUriFromServer(array $server, array $headers)
+    {
+        return marshalUriFromSapi($server, $headers);
+    }
+
+    /**
+     * Marshal the host and port from HTTP headers and/or the PHP environment
+     *
+     * @deprecated since 1.8.0; use Laminas\Diactoros\marshalUriFromSapi() instead,
+     *     and pull the host and port from the Uri instance that function
+     *     returns.
+     * @param stdClass $accumulator
+     * @param array $server
+     * @param array $headers
+     */
+    public static function marshalHostAndPortFromHeaders(stdClass $accumulator, array $server, array $headers)
+    {
+        $uri = marshalUriFromSapi($server, $headers);
+        $accumulator->host = $uri->getHost();
+        $accumulator->port = $uri->getPort();
+    }
+
+    /**
+     * Detect the base URI for the request
+     *
+     * Looks at a variety of criteria in order to attempt to autodetect a base
+     * URI, including rewrite URIs, proxy URIs, etc.
+     *
+     * @deprecated since 1.8.0; use Laminas\Diactoros\marshalUriFromSapi() instead,
+     *     and pull the path from the Uri instance that function returns.
+     * @param array $server
+     * @return string
+     */
+    public static function marshalRequestUri(array $server)
+    {
+        $uri = marshalUriFromSapi($server, []);
+        return $uri->getPath();
+    }
+
+    /**
+     * Strip the query string from a path
+     *
+     * @deprecated since 1.8.0; no longer used internally.
+     * @param mixed $path
+     * @return string
+     */
+    public static function stripQueryString($path)
+    {
+        return explode('?', $path, 2)[0];
     }
 }

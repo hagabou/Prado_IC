@@ -1,6 +1,10 @@
 <?php
 
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-diactoros for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-diactoros/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-diactoros/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Diactoros;
 
@@ -32,7 +36,7 @@ class PhpInputStream extends Stream
     /**
      * {@inheritdoc}
      */
-    public function __toString() : string
+    public function __toString()
     {
         if ($this->reachedEof) {
             return $this->cache;
@@ -45,7 +49,7 @@ class PhpInputStream extends Stream
     /**
      * {@inheritdoc}
      */
-    public function isWritable() : bool
+    public function isWritable()
     {
         return false;
     }
@@ -53,7 +57,7 @@ class PhpInputStream extends Stream
     /**
      * {@inheritdoc}
      */
-    public function read($length) : string
+    public function read($length)
     {
         $content = parent::read($length);
         if (! $this->reachedEof) {
@@ -70,7 +74,7 @@ class PhpInputStream extends Stream
     /**
      * {@inheritdoc}
      */
-    public function getContents($maxLength = -1) : string
+    public function getContents($maxLength = -1)
     {
         if ($this->reachedEof) {
             return $this->cache;

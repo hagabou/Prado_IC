@@ -19,6 +19,8 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
  */
 class PrototypeConfigurator extends AbstractServiceConfigurator
 {
+    const FACTORY = 'load';
+
     use Traits\AbstractTrait;
     use Traits\ArgumentTrait;
     use Traits\AutoconfigureTrait;
@@ -35,14 +37,12 @@ class PrototypeConfigurator extends AbstractServiceConfigurator
     use Traits\ShareTrait;
     use Traits\TagTrait;
 
-    public const FACTORY = 'load';
-
     private $loader;
     private $resource;
-    private $excludes;
+    private $exclude;
     private $allowParent;
 
-    public function __construct(ServicesConfigurator $parent, PhpFileLoader $loader, Definition $defaults, string $namespace, string $resource, bool $allowParent)
+    public function __construct(ServicesConfigurator $parent, PhpFileLoader $loader, Definition $defaults, $namespace, $resource, $allowParent)
     {
         $definition = new Definition();
         if (!$defaults->isPublic() || !$defaults->isPrivate()) {
@@ -66,21 +66,21 @@ class PrototypeConfigurator extends AbstractServiceConfigurator
         parent::__destruct();
 
         if ($this->loader) {
-            $this->loader->registerClasses($this->definition, $this->id, $this->resource, $this->excludes);
+            $this->loader->registerClasses($this->definition, $this->id, $this->resource, $this->exclude);
         }
         $this->loader = null;
     }
 
     /**
-     * Excludes files from registration using glob patterns.
+     * Excludes files from registration using a glob pattern.
      *
-     * @param string[]|string $excludes
+     * @param string $exclude
      *
      * @return $this
      */
-    final public function exclude($excludes): self
+    final public function exclude($exclude)
     {
-        $this->excludes = (array) $excludes;
+        $this->exclude = $exclude;
 
         return $this;
     }

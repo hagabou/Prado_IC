@@ -1,47 +1,52 @@
 <?php
 
+/**
+ * @see       https://github.com/laminas/laminas-feed for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-feed/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-feed/blob/master/LICENSE.md New BSD License
+ */
+
 namespace Laminas\Feed\PubSubHubbub;
 
 use Laminas\Escaper\Escaper;
 use Laminas\Feed\Reader;
 use Laminas\Http;
 
-use function is_string;
-use function str_replace;
-
 class PubSubHubbub
 {
     /**
      * Verification Modes
      */
-    public const VERIFICATION_MODE_SYNC  = 'sync';
-    public const VERIFICATION_MODE_ASYNC = 'async';
+    const VERIFICATION_MODE_SYNC  = 'sync';
+    const VERIFICATION_MODE_ASYNC = 'async';
 
     /**
      * Subscription States
      */
-    public const SUBSCRIPTION_VERIFIED    = 'verified';
-    public const SUBSCRIPTION_NOTVERIFIED = 'not_verified';
-    public const SUBSCRIPTION_TODELETE    = 'to_delete';
+    const SUBSCRIPTION_VERIFIED    = 'verified';
+    const SUBSCRIPTION_NOTVERIFIED = 'not_verified';
+    const SUBSCRIPTION_TODELETE    = 'to_delete';
 
-    /** @var Escaper */
+    /**
+     * @var Escaper
+     */
     protected static $escaper;
 
     /**
      * Singleton instance if required of the HTTP client
      *
-     * @var null|Http\Client
+     * @var Http\Client
      */
     protected static $httpClient;
 
     /**
      * Simple utility function which imports any feed URL and
      * determines the existence of Hub Server endpoints. This works
-     * best if directly given an instance of Laminas\Feed\Reader\Atom|Laminas\Feed\Reader\Rss
+     * best if directly given an instance of Laminas\Feed\Reader\Atom|Rss
      * to leverage off.
      *
      * @param  string|Reader\Feed\AbstractFeed $source
-     * @return array<array-key, mixed>|null
+     * @return array
      * @throws Exception\InvalidArgumentException
      */
     public static function detectHubs($source)
@@ -103,10 +108,8 @@ class PubSubHubbub
      * Set the Escaper instance
      *
      * If null, resets the instance
-     *
-     * @return void
      */
-    public static function setEscaper(?Escaper $escaper = null)
+    public static function setEscaper(Escaper $escaper = null)
     {
         static::$escaper = $escaper;
     }
@@ -136,6 +139,7 @@ class PubSubHubbub
     {
         $escaper    = static::getEscaper();
         $rawencoded = $escaper->escapeUrl($string);
-        return str_replace('%7E', '~', $rawencoded);
+        $rfcencoded = str_replace('%7E', '~', $rawencoded);
+        return $rfcencoded;
     }
 }

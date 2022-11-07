@@ -12,15 +12,13 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Symfony\Component\ExpressionLanguage\Expression;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
 class ParametersConfigurator extends AbstractConfigurator
 {
-    public const FACTORY = 'parameters';
+    const FACTORY = 'parameters';
 
     private $container;
 
@@ -32,14 +30,13 @@ class ParametersConfigurator extends AbstractConfigurator
     /**
      * Creates a parameter.
      *
+     * @param string $name
+     * @param mixed  $value
+     *
      * @return $this
      */
-    final public function set(string $name, $value): self
+    final public function set($name, $value)
     {
-        if ($value instanceof Expression) {
-            throw new InvalidArgumentException(sprintf('Using an expression in parameter "%s" is not allowed.', $name));
-        }
-
         $this->container->setParameter($name, static::processValue($value, true));
 
         return $this;
@@ -48,9 +45,12 @@ class ParametersConfigurator extends AbstractConfigurator
     /**
      * Creates a parameter.
      *
+     * @param string $name
+     * @param mixed  $value
+     *
      * @return $this
      */
-    final public function __invoke(string $name, $value): self
+    final public function __invoke($name, $value)
     {
         return $this->set($name, $value);
     }

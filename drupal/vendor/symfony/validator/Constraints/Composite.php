@@ -79,7 +79,7 @@ abstract class Composite extends Constraint
             }
         }
 
-        if (!isset(((array) $this)['groups'])) {
+        if (!property_exists($this, 'groups')) {
             $mergedGroups = [];
 
             foreach ($nestedConstraints as $constraint) {
@@ -96,7 +96,7 @@ abstract class Composite extends Constraint
         }
 
         foreach ($nestedConstraints as $constraint) {
-            if (isset(((array) $constraint)['groups'])) {
+            if (property_exists($constraint, 'groups')) {
                 $excessGroups = array_diff($constraint->groups, $this->groups);
 
                 if (\count($excessGroups) > 0) {
@@ -135,17 +135,6 @@ abstract class Composite extends Constraint
      * @return string The property name
      */
     abstract protected function getCompositeOption();
-
-    /**
-     * @internal Used by metadata
-     *
-     * @return Constraint[]
-     */
-    public function getNestedConstraints()
-    {
-        /* @var Constraint[] $nestedConstraints */
-        return $this->{$this->getCompositeOption()};
-    }
 
     /**
      * Initializes the nested constraints.

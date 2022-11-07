@@ -1,16 +1,21 @@
 <?php
 
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-diactoros for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-diactoros/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-diactoros/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Diactoros\Request;
 
+use InvalidArgumentException;
 use Laminas\Diactoros\AbstractSerializer;
-use Laminas\Diactoros\Exception;
 use Laminas\Diactoros\Request;
 use Laminas\Diactoros\Stream;
 use Laminas\Diactoros\Uri;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
+use UnexpectedValueException;
 
 use function preg_match;
 use function sprintf;
@@ -29,9 +34,11 @@ final class Serializer extends AbstractSerializer
      *
      * Internally, casts the message to a stream and invokes fromStream().
      *
-     * @throws Exception\SerializationException when errors occur parsing the message.
+     * @param string $message
+     * @return Request
+     * @throws UnexpectedValueException when errors occur parsing the message.
      */
-    public static function fromString(string $message) : Request
+    public static function fromString($message)
     {
         $stream = new Stream('php://temp', 'wb+');
         $stream->write($message);
@@ -41,22 +48,22 @@ final class Serializer extends AbstractSerializer
     /**
      * Deserialize a request stream to a request instance.
      *
-     * @throws Exception\InvalidArgumentException if the message stream is not
-     *     readable or seekable.
-     * @throws Exception\SerializationException if an invalid request line is detected.
+     * @param StreamInterface $stream
+     * @return Request
+     * @throws UnexpectedValueException when errors occur parsing the message.
      */
-    public static function fromStream(StreamInterface $stream) : Request
+    public static function fromStream(StreamInterface $stream)
     {
         if (! $stream->isReadable() || ! $stream->isSeekable()) {
-            throw new Exception\InvalidArgumentException('Message stream must be both readable and seekable');
+            throw new InvalidArgumentException('Message stream must be both readable and seekable');
         }
 
         $stream->rewind();
 
-        [$method, $requestTarget, $version] = self::getRequestLine($stream);
+        list($method, $requestTarget, $version) = self::getRequestLine($stream);
         $uri = self::createUriFromRequestTarget($requestTarget);
 
-        [$headers, $body] = self::splitStream($stream);
+        list($headers, $body) = self::splitStream($stream);
 
         return (new Request($uri, $method, $body, $headers))
             ->withProtocolVersion($version)
@@ -65,10 +72,16 @@ final class Serializer extends AbstractSerializer
 
     /**
      * Serialize a request message to a string.
+     *
+     * @param RequestInterface $request
+     * @return string
      */
-    public static function toString(RequestInterface $request) : string
+    public static function toString(RequestInterface $request)
     {
         $httpMethod = $request->getMethod();
+        if (empty($httpMethod)) {
+            throw new UnexpectedValueException('Object can not be serialized because HTTP method is empty');
+        }
         $headers = self::serializeHeaders($request->getHeaders());
         $body    = (string) $request->getBody();
         $format  = '%s %s HTTP/%s%s%s';
@@ -97,9 +110,10 @@ final class Serializer extends AbstractSerializer
      * exception if it does not follow specifications; if valid, returns a list
      * with the method, target, and version, in that order.
      *
-     * @throws Exception\SerializationException
+     * @param StreamInterface $stream
+     * @return array
      */
-    private static function getRequestLine(StreamInterface $stream) : array
+    private static function getRequestLine(StreamInterface $stream)
     {
         $requestLine = self::getLine($stream);
 
@@ -108,7 +122,7 @@ final class Serializer extends AbstractSerializer
             $requestLine,
             $matches
         )) {
-            throw Exception\SerializationException::forInvalidRequestLine();
+            throw new UnexpectedValueException('Invalid request line detected');
         }
 
         return [$matches['method'], $matches['target'], $matches['version']];
@@ -120,8 +134,11 @@ final class Serializer extends AbstractSerializer
      * If the request target is of authority or asterisk form, an empty Uri
      * instance is returned; otherwise, the value is used to create and return
      * a new Uri instance.
+     *
+     * @param string $requestTarget
+     * @return Uri
      */
-    private static function createUriFromRequestTarget(string $requestTarget) : Uri
+    private static function createUriFromRequestTarget($requestTarget)
     {
         if (preg_match('#^https?://#', $requestTarget)) {
             return new Uri($requestTarget);

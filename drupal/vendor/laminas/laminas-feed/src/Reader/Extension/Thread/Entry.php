@@ -1,17 +1,21 @@
 <?php
 
+/**
+ * @see       https://github.com/laminas/laminas-feed for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-feed/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-feed/blob/master/LICENSE.md New BSD License
+ */
+
 namespace Laminas\Feed\Reader\Extension\Thread;
 
 use Laminas\Feed\Reader\Extension;
-
-use function array_key_exists;
 
 class Entry extends Extension\AbstractEntry
 {
     /**
      * Get the "in-reply-to" value
      *
-     * @return void
+     * @return string
      */
     public function getInReplyTo()
     {

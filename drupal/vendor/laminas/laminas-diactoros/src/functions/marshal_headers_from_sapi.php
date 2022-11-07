@@ -1,11 +1,14 @@
 <?php
 
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-diactoros for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-diactoros/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-diactoros/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Diactoros;
 
 use function array_key_exists;
-use function is_string;
 use function strpos;
 use function strtolower;
 use function strtr;
@@ -15,31 +18,10 @@ use function substr;
  * @param array $server Values obtained from the SAPI (generally `$_SERVER`).
  * @return array Header/value pairs
  */
-function marshalHeadersFromSapi(array $server) : array
+function marshalHeadersFromSapi(array $server)
 {
-    $contentHeaderLookup = isset($server['LAMINAS_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP'])
-        ? static function (string $key) : bool {
-            static $contentHeaders = [
-                'CONTENT_TYPE'   => true,
-                'CONTENT_LENGTH' => true,
-                'CONTENT_MD5'    => true,
-            ];
-            return isset($contentHeaders[$key]);
-        }
-        : static function (string $key): bool {
-            return strpos($key, 'CONTENT_') === 0;
-        };
-
     $headers = [];
     foreach ($server as $key => $value) {
-        if (! is_string($key)) {
-            continue;
-        }
-
-        if ($value === '') {
-            continue;
-        }
-
         // Apache prefixes environment variables with REDIRECT_
         // if they are added by rewrite rules
         if (strpos($key, 'REDIRECT_') === 0) {
@@ -52,14 +34,14 @@ function marshalHeadersFromSapi(array $server) : array
             }
         }
 
-        if (strpos($key, 'HTTP_') === 0) {
+        if ($value && strpos($key, 'HTTP_') === 0) {
             $name = strtr(strtolower(substr($key, 5)), '_', '-');
             $headers[$name] = $value;
             continue;
         }
 
-        if ($contentHeaderLookup($key)) {
-            $name = strtr(strtolower($key), '_', '-');
+        if ($value && strpos($key, 'CONTENT_') === 0) {
+            $name = 'content-' . strtolower(substr($key, 8));
             $headers[$name] = $value;
             continue;
         }
