@@ -1,8 +1,0 @@
-ccos.single:
-  path: '/ccos/single/{entity_type_id}/{id}/clear'
-  defaults:
-    _controller: '\Drupal\ccos\Controller\ClearCacheController::clearCacheSingle'
-    _title: 'Clear Specific Cache'
-  requirements:
-    _permission: 'ccos single'
-    _csrf_token: 'TRUE'

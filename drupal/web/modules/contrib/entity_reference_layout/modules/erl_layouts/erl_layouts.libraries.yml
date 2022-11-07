@@ -1,5 +1,0 @@
-erl_layouts:
-  version: VERSION
-  css:
-    theme:
-      css/erl_layouts.css: {}

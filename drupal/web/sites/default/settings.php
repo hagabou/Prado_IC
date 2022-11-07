@@ -266,7 +266,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = '18fTR9tc58NMolsACV1-TXYLFYvKBsxPwPbITuS81DFlQ_SnAc3VkgMhz-t4iswOKJLCTVapuQ';
 
 /**
  * Deployment identifier.
@@ -508,29 +508,6 @@ if ($settings['hash_salt']) {
 # $settings['file_public_path'] = 'sites/default/files';
 
 /**
- * Additional public file schemes:
- *
- * Public schemes are URI schemes that allow download access to all users for
- * all files within that scheme.
- *
- * The "public" scheme is always public, and the "private" scheme is always
- * private, but other schemes, such as "https", "s3", "example", or others,
- * can be either public or private depending on the site. By default, they're
- * private, and access to individual files is controlled via
- * hook_file_download().
- *
- * Typically, if a scheme should be public, a module makes it public by
- * implementing hook_file_download(), and granting access to all users for all
- * files. This could be either the same module that provides the stream wrapper
- * for the scheme, or a different module that decides to make the scheme
- * public. However, in cases where a site needs to make a scheme public, but
- * is unable to add code in a module to do so, the scheme may be added to this
- * variable, the result of which is that system_file_download() grants public
- * access to all files within that scheme.
- */
-# $settings['file_additional_public_schemes'] = ['example'];
-
-/**
  * Private file path:
  *
  * A local file system path where private files will be stored. This directory
@@ -543,7 +520,7 @@ if ($settings['hash_salt']) {
  * See https://www.drupal.org/documentation/modules/file for more information
  * about securing private files.
  */
-# $settings['file_private_path'] = '';
+$settings['file_private_path'] = '/home/clients/e5563ad64381a5082e6e204d852740fa/sites/salon-prado.tadaa.dev/drupal8/fichiers_prives';
 
 /**
  * Temporary file path:
@@ -729,6 +706,13 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
+ $settings['trusted_host_patterns'] = [
+    /*'^salon-prado\.tadaa\.dev$',
+    '^cesanneesincroyables\.fr$',
+    '^www\.cesanneesincroyables\.fr$',
+#    '^cai\.le-prado\.fr$' */
+      'www\.ybhv0888\.odns\.fr'
+];
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.
@@ -778,3 +762,15 @@ $settings['entity_update_backup'] = TRUE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
+$databases['default']['default'] = array (
+  'database' => 'ybhv0888_test_ic',
+  'username' => 'ybhv0888_haga',
+  'password' => 'Ui&6?Ah!?h4)',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+$settings['config_sync_directory'] = 'sites/default/files/config_ibyU9Ml_lSwLg9yTc4GeHjhtUnLj7J1eC88HcME3M8JwDgoVnHLfCkWbMUYiH_IBnEz-6uLusQ/sync';
+

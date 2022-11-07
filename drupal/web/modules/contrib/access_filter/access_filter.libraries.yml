@@ -1,5 +1,0 @@
-common:
-  version: VERSION
-  css:
-    theme:
-      css/access_filter.css: {}

@@ -1,6 +1,0 @@
-services:
-  ccos.drush9_commands:
-    class: Drupal\ccos\Commands\ClearCacheDrush9Commands
-    arguments: ['@ccos.clear_cache']
-    tags:
-      - { name: drush.command }
