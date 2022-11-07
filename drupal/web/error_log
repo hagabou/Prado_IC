@@ -1,0 +1,16 @@
+[07-Nov-2022 14:24:13 Europe/Paris] Uncaught PHP Exception Drupal\Core\Database\DatabaseExceptionWrapper: "SQLSTATE[HY000]: General error: 1 near "ON": syntax error: INSERT INTO "cache_data" ("cid", "expire", "created", "tags", "checksum", "data", "serialized") VALUES (:db_insert_placeholder_0, :db_insert_placeholder_1, :db_insert_placeholder_2, :db_insert_placeholder_3, :db_insert_placeholder_4, :db_insert_placeholder_5, :db_insert_placeholder_6) ON CONFLICT ("cid") DO UPDATE SET "cid" = EXCLUDED."cid", "expire" = EXCLUDED."expire", "created" = EXCLUDED."created", "tags" = EXCLUDED."tags", "checksum" = EXCLUDED."checksum", "data" = EXCLUDED."data", "serialized" = EXCLUDED."serialized"; Array
+(
+    [:db_insert_placeholder_0] => route:[language]=en:/:
+    [:db_insert_placeholder_1] => -1
+    [:db_insert_placeholder_2] => 1667827453.452
+    [:db_insert_placeholder_3] => route_match
+    [:db_insert_placeholder_4] => 0
+    [:db_insert_placeholder_5] => a:3:{s:4:"path";s:5:"/node";s:5:"query";a:0:{}s:6:"routes";O:41:"Symfony\Component\Routing\RouteCollection":2:{s:49:"
+[07-Nov-2022 14:25:34 Europe/Paris] Uncaught PHP Exception Drupal\Core\Database\DatabaseExceptionWrapper: "SQLSTATE[HY000]: General error: 1 near "ON": syntax error: INSERT INTO "cache_data" ("cid", "expire", "created", "tags", "checksum", "data", "serialized") VALUES (:db_insert_placeholder_0, :db_insert_placeholder_1, :db_insert_placeholder_2, :db_insert_placeholder_3, :db_insert_placeholder_4, :db_insert_placeholder_5, :db_insert_placeholder_6) ON CONFLICT ("cid") DO UPDATE SET "cid" = EXCLUDED."cid", "expire" = EXCLUDED."expire", "created" = EXCLUDED."created", "tags" = EXCLUDED."tags", "checksum" = EXCLUDED."checksum", "data" = EXCLUDED."data", "serialized" = EXCLUDED."serialized"; Array
+(
+    [:db_insert_placeholder_0] => route:[language]=en:/:
+    [:db_insert_placeholder_1] => -1
+    [:db_insert_placeholder_2] => 1667827534.653
+    [:db_insert_placeholder_3] => route_match
+    [:db_insert_placeholder_4] => 0
+    [:db_insert_placeholder_5] => a:3:{s:4:"path";s:5:"/node";s:5:"query";a:0:{}s:6:"routes";O:41:"Symfony\Component\Routing\RouteCollection":2:{s:49:"
