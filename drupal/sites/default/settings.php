@@ -712,7 +712,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
     '^www\.cesanneesincroyables\.fr$',
     '^cai\.le-prado\.fr$'
     */
-    '^ybhv0888\.odns\.fr'
+    '^www\.ybhv0888\.odns\.fr'
 ];
 
 /**
