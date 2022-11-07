@@ -707,10 +707,12 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * example.org, with all subdomains included.
  */
  $settings['trusted_host_patterns'] = [
-    '^salon-prado\.tadaa\.dev$',
+/*    '^salon-prado\.tadaa\.dev$',
     '^cesanneesincroyables\.fr$',
     '^www\.cesanneesincroyables\.fr$',
-#    '^cai\.le-prado\.fr$'
+    '^cai\.le-prado\.fr$'
+    */
+    '^ybhv0888\.odns\.fr'
 ];
 
 /**
@@ -771,5 +773,3 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
-$settings['config_sync_directory'] = 'sites/default/files/config_ibyU9Ml_lSwLg9yTc4GeHjhtUnLj7J1eC88HcME3M8JwDgoVnHLfCkWbMUYiH_IBnEz-6uLusQ/sync';
-
