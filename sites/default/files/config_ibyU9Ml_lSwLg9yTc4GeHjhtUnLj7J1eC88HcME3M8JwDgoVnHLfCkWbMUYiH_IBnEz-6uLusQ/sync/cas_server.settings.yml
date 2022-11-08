@@ -1,0 +1,18 @@
+ticket:
+  service_ticket_timeout: 10
+  proxy_ticket_timeout: 10
+  proxy_granting_ticket_timeout: 7200
+  ticket_granting_ticket_timeout: 28800
+  ticket_granting_ticket_auth: false
+  ticket_username_attribute: name
+messages:
+  invalid_service: ''
+  user_logout: ''
+  logged_in: ''
+debugging:
+  log: false
+login:
+  username_attribute: both
+_core:
+  default_config_hash: '-g0oFQqqvBPfDjK04dzRj8939yzuE7k1hq5vP6LI5Ns'
+langcode: fr

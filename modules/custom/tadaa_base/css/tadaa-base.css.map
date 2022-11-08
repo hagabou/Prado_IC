@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW,CACP,SAAS,CAAE,GAAG",
+"sources": ["../scss/tadaa-base.scss"],
+"names": [],
+"file": "tadaa-base.css"
+}

@@ -1,0 +1,21 @@
+uuid: f6ea22d5-b4e1-41b9-a87f-0a6d088cec79
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_force
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  menu_force:
+    menu_force: 0
+    menu_force_parent: 0
+name: Actualités
+type: evenement
+description: 'Des actualités du site internet, catégorisées en fonction de l''espace où ils doivent s''afficher.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

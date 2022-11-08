@@ -1,0 +1,21 @@
+uuid: 423e3c0a-9252-4164-98df-5d492be6f143
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ca
+    - node.type.temoignage
+  module:
+    - options
+id: node.temoignage.field_ca
+field_name: field_ca
+entity_type: node
+bundle: temoignage
+label: Catégorie
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

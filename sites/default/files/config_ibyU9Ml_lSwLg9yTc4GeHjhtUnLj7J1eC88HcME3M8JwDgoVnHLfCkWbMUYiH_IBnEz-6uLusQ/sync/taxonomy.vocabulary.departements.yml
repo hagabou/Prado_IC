@@ -1,0 +1,8 @@
+uuid: c68294a8-43a3-47af-a43f-c96442f32d9b
+langcode: fr
+status: true
+dependencies: {  }
+name: Départements
+vid: departements
+description: ''
+weight: 0

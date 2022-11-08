@@ -1,0 +1,14 @@
+uuid: 8c1c5405-784f-4ae7-be2e-59798786e16b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.professionnel
+  module:
+    - user
+id: user_add_role_action.professionnel
+label: 'Ajouter le rôle Professionnel aux utilisateurs sélectionnés'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: professionnel

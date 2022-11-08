@@ -1,0 +1,22 @@
+uuid: 9986102a-ac13-4f95-925d-0e3b83c0fdc4
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - freelancer_zymphonies_theme
+_core:
+  default_config_hash: uCIL3hdrLr0CDTaCc4o4AiRVPjv4vYMjyeLJALoAV8k
+id: freelancer_zymphonies_theme_messages
+theme: freelancer_zymphonies_theme
+region: highlighted
+weight: -50
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

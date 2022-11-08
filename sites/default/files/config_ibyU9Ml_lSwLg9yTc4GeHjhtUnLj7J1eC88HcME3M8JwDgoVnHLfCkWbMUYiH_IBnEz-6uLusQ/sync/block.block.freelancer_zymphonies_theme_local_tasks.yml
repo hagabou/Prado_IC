@@ -1,0 +1,22 @@
+uuid: fd99411d-4039-4cf5-9cd0-e14527f26ad7
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - freelancer_zymphonies_theme
+_core:
+  default_config_hash: _dUT-48_f1GVFiS1wpdJm5joed3pxeQK-gTiGTRE0Js
+id: freelancer_zymphonies_theme_local_tasks
+theme: freelancer_zymphonies_theme
+region: content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

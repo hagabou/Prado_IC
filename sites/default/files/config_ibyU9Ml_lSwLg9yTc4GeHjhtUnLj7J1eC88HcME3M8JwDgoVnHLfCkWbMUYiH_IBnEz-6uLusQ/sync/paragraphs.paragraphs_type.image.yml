@@ -1,0 +1,17 @@
+uuid: 8c96f4ed-5d9d-406d-bae6-89503848fc45
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: T1ybrR4h62a1SxY4lkxV0cAZCtdkvDxBZOOiXAxgZ3M
+id: image
+label: Image
+icon_uuid: null
+icon_default: null
+description: 'Une image d''illustration'
+behavior_plugins: {  }

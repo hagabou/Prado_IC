@@ -1,0 +1,30 @@
+uuid: fe3e083f-c25d-4706-87b6-cd2bc4738278
+langcode: fr
+status: false
+dependencies:
+  config:
+    - views.view.actualites_espace_pro
+  module:
+    - system
+    - views
+  theme:
+    - d8base
+id: views_block__actualites_espace_pro_block_1
+theme: d8base
+region: sidebar_first
+weight: -11
+provider: null
+plugin: 'views_block:actualites_espace_pro-block_1'
+settings:
+  id: 'views_block:actualites_espace_pro-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /espace-pro
+    negate: false
+    context_mapping: {  }

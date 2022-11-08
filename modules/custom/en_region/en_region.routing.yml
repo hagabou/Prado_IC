@@ -1,0 +1,18 @@
+en_region.modal:
+  path: '/carte-departements/modal/{dpt}'
+  defaults:
+    _controller: '\Drupal\en_region\Controller\DptInfosController::getModal'
+    _title: 'Récupérer des informartions sur le département'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+en_region.modal.animateurs:
+  path: '/carte-departements/modal-animateurs/{dpt}'
+  defaults:
+    _controller: '\Drupal\en_region\Controller\DptInfosController::getModalAnimateurs'
+    _title: 'Récupérer des informartions sur le département'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'

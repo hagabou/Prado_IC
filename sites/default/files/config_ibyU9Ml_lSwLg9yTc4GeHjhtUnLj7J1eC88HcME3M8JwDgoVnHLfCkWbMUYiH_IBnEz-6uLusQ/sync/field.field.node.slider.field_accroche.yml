@@ -1,0 +1,19 @@
+uuid: 2ef32053-9ef7-45c0-b16c-88cbc78b9c07
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accroche
+    - node.type.slider
+id: node.slider.field_accroche
+field_name: field_accroche
+entity_type: node
+bundle: slider
+label: Accroche
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

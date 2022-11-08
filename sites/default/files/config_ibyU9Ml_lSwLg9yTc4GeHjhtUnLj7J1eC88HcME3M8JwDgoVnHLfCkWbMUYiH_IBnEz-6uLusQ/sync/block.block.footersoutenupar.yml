@@ -1,0 +1,25 @@
+uuid: 3204de9f-4331-4349-8bf1-a22892931abf
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d2fb8818-a9d2-4e15-97ea-bd9cf93911dc'
+  module:
+    - block_content
+  theme:
+    - d8base
+id: footersoutenupar
+theme: d8base
+region: footer_third
+weight: 0
+provider: null
+plugin: 'block_content:d2fb8818-a9d2-4e15-97ea-bd9cf93911dc'
+settings:
+  id: 'block_content:d2fb8818-a9d2-4e15-97ea-bd9cf93911dc'
+  label: 'Footer soutenu par'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

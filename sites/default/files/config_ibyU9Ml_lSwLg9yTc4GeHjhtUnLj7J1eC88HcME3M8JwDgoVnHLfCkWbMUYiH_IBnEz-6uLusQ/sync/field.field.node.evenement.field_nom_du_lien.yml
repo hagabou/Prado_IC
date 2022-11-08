@@ -1,0 +1,19 @@
+uuid: fe151370-3bf1-469f-ba0b-eb66999aa2b8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_nom_du_lien
+    - node.type.evenement
+id: node.evenement.field_nom_du_lien
+field_name: field_nom_du_lien
+entity_type: node
+bundle: evenement
+label: 'Nom du lien'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

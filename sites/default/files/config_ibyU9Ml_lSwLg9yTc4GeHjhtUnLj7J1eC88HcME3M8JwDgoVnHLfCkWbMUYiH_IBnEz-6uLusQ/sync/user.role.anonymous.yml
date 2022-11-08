@@ -1,0 +1,17 @@
+uuid: dbc41b3b-9bf0-4c8f-ad19-c2e133ea3419
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pq_mEIu_B4widZN7Ap81iCJSjShFFdcL0jEiCi8VrDk
+id: anonymous
+label: 'Utilisateur anonyme'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'search content'
+  - 'use oauth2 server'
+  - 'use text format restricted_html'

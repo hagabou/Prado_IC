@@ -1,0 +1,24 @@
+uuid: 23a0a15b-4f5e-437d-8a39-b8a5940c3c8f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.group_content.group_content_type_551a2c1eda137.group_roles
+    - group.content_type.group_content_type_551a2c1eda137
+id: group_content.group_content_type_551a2c1eda137.default
+targetEntityType: group_content
+bundle: group_content_type_551a2c1eda137
+mode: default
+content:
+  group_roles:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: false
+    weight: -4
+    third_party_settings: {  }
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  uid: true

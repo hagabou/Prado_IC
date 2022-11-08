@@ -1,0 +1,17 @@
+uuid: 31acdcb8-8ef0-4366-8b9b-86a5478c38e6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+  enforced:
+    config:
+      - user.role.jouer
+id: salon_des_familles-c257be5c7
+label: Jouer
+weight: 20
+internal: true
+audience: outsider
+group_type: salon_des_familles
+permissions_ui: false
+permissions: {  }

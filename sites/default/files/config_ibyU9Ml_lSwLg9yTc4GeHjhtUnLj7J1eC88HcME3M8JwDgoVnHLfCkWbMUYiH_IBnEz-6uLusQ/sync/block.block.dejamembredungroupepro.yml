@@ -1,0 +1,31 @@
+uuid: d1501d75-778a-471b-80be-d1d6030220d4
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:03a3b7e7-a6fc-4fad-a8f2-3749afa722f4'
+  module:
+    - block_content
+    - system
+  theme:
+    - d8base
+id: dejamembredungroupepro
+theme: d8base
+region: content
+weight: -5
+provider: null
+plugin: 'block_content:03a3b7e7-a6fc-4fad-a8f2-3749afa722f4'
+settings:
+  id: 'block_content:03a3b7e7-a6fc-4fad-a8f2-3749afa722f4'
+  label: 'Déjà membre d''un groupe pro'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/professionnels\r\n/professionnels/*"
+    negate: false
+    context_mapping: {  }

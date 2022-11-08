@@ -1,0 +1,31 @@
+uuid: f4987a91-8177-4a24-83e0-cdb254bfcfeb
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0cf2f040-b214-469c-90f4-cb097e2786b3'
+  module:
+    - block_content
+    - system
+  theme:
+    - d8base
+id: dejamembredungroupefamille_2
+theme: d8base
+region: content
+weight: -6
+provider: null
+plugin: 'block_content:0cf2f040-b214-469c-90f4-cb097e2786b3'
+settings:
+  id: 'block_content:0cf2f040-b214-469c-90f4-cb097e2786b3'
+  label: 'Déjà membre d''un groupe famille'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '/parents/*'
+    negate: false
+    context_mapping: {  }

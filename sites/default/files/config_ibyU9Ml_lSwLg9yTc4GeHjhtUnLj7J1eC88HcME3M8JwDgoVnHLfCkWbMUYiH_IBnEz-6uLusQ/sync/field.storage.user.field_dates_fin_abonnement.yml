@@ -1,0 +1,20 @@
+uuid: 17fab0b4-a512-4b1b-b7b9-041e2ce58b93
+langcode: fr
+status: true
+dependencies:
+  module:
+    - datetime
+    - user
+id: user.field_dates_fin_abonnement
+field_name: field_dates_fin_abonnement
+entity_type: user
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

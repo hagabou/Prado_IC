@@ -1,0 +1,5 @@
+# services:
+#  en_region.liste_regions:
+#    class: Drupal\en_region\Services\ListeRegions
+#  en_region.liste_pays:
+#    class: Drupal\en_region\Services\ListePays

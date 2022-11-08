@@ -1,0 +1,20 @@
+uuid: e2e264e4-3679-4780-b9a5-2c0f4e8f012e
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: 7I-zOq1ufGaugig8b1oSjsc-vG-CnKMNZGCZnJF4j0g
+id: tadaa_cai_theme_local_actions
+theme: tadaa_cai_theme
+region: content
+weight: -3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

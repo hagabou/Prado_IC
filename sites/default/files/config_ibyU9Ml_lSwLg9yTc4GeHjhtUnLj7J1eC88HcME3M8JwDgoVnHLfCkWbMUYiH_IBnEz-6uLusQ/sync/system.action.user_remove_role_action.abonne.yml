@@ -1,0 +1,14 @@
+uuid: 4b1991c3-606f-4d4b-bcca-6095d01a9638
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.abonne
+  module:
+    - user
+id: user_remove_role_action.abonne
+label: 'Enlever le rôle Abonné des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: abonne

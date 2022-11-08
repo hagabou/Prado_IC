@@ -1,0 +1,24 @@
+uuid: e5f07faf-d3b3-4767-b5d2-79738d42ce08
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dates_abonnement
+  module:
+    - datetime
+    - user
+id: user.user.field_dates_abonnement
+field_name: field_dates_abonnement
+entity_type: user
+bundle: user
+label: 'Date(s) de début d''abonnement'
+description: 'Date de début d''abonnement'
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

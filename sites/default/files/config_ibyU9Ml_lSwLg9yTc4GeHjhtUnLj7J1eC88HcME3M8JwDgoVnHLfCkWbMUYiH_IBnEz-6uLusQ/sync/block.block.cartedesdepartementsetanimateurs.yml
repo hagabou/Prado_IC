@@ -1,0 +1,20 @@
+uuid: c6886d7e-ffe7-4de4-a689-cfd4b472d7a2
+langcode: fr
+status: true
+dependencies:
+  module:
+    - en_region
+  theme:
+    - d8base
+id: cartedesdepartementsetanimateurs
+theme: d8base
+region: auto_hidden_block
+weight: 0
+provider: null
+plugin: carte_departements_animateur
+settings:
+  id: carte_departements_animateur
+  label: 'Carte des départements ET animateurs'
+  provider: en_region
+  label_display: '0'
+visibility: {  }

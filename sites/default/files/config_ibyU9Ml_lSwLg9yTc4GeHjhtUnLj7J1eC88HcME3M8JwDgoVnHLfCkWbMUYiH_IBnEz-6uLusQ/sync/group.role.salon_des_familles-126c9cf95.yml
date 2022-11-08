@@ -1,0 +1,17 @@
+uuid: c0729073-a68c-43f6-9c2b-86ec90428012
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+  enforced:
+    config:
+      - user.role.abonne
+id: salon_des_familles-126c9cf95
+label: Abonné
+weight: 19
+internal: true
+audience: outsider
+group_type: salon_des_familles
+permissions_ui: false
+permissions: {  }

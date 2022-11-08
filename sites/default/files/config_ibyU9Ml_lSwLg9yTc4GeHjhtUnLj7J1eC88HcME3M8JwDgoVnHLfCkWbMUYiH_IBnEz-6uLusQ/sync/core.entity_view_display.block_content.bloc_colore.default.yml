@@ -1,0 +1,27 @@
+uuid: 67099f42-6e11-4056-8de8-20fe1254ca6c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_colore
+    - field.field.block_content.bloc_colore.body
+    - field.field.block_content.bloc_colore.field_couleur
+  module:
+    - text
+_core:
+  default_config_hash: MjmiOmJjkeTWf3YLRfGd9rlFCtkFJ2NoDWH144oxs2Q
+id: block_content.bloc_colore.default
+targetEntityType: block_content
+bundle: bloc_colore
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_couleur: true
+  langcode: true

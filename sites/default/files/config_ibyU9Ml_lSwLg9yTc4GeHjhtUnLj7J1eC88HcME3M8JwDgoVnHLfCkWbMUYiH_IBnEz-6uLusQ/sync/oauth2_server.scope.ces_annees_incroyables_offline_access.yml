@@ -1,0 +1,8 @@
+uuid: 3a6bcd9a-7cab-4f96-9cbc-9cf347102f28
+langcode: en
+status: true
+dependencies: {  }
+id: ces_annees_incroyables_offline_access
+scope_id: offline_access
+server_id: ces_annees_incroyables
+description: 'Access the API when you''re not present.'

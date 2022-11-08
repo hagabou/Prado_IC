@@ -1,0 +1,12 @@
+uuid: dfbfec7d-8bf1-49ce-9a2f-89fc81fdf312
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5sJh0ElXMwbW54kgOHwmjVYKTw095mfuoWDJuZDklvk
+id: ligne
+label: 'Zone de texte'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

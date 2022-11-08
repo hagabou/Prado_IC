@@ -1,0 +1,159 @@
+<?php
+/**
+ * Page preprocess
+ */
+function d8base_preprocess_page(&$variables) {
+   if($variables['is_front']) {
+    //   $variables['contentlayout'] = 'pure-u-md-24-24';
+   }
+
+  // Add responsive class : footer : toujours 3 zones
+  if((!empty($variables['page']['footer_first']) && !empty($variables['page']['footer_second'])) or (!empty($variables['page']['footer_first']) && !empty($variables['page']['footer_third'])) or (!empty($variables['page']['footer_third']) && !empty($variables['page']['footer_second']))) {
+    $variables['footer_class'] = 'pure-u-md-8-24 pure-u-12-24';
+    $variables['footer_align'] = 'justify-content-end';
+  }
+  
+  /*REECRITURE DES CLASS PURE CSS*/
+  // Add responsive class
+  if (!empty($variables['page']['topwidget_first']) && !empty($variables['page']['topwidget_second']) && !empty($variables['page']['topwidget_third'])) {
+    $variables['topwidget_class'] = 'pure-u-sm-8-24';
+  }
+  elseif((!empty($variables['page']['topwidget_first']) && !empty($variables['page']['topwidget_second'])) or (!empty($variables['page']['topwidget_first']) && !empty($variables['page']['topwidget_third'])) or (!empty($variables['page']['topwidget_third']) && !empty($variables['page']['topwidget_second']))) {
+    $variables['topwidget_class'] = 'pure-u-sm-12-24';
+  }
+  else {
+    $variables['topwidget_class'] = 'pure-u-sm-24-24';
+  }
+
+  // Add responsive class
+  if (!empty($variables['page']['bottom_first']) && !empty($variables['page']['bottom_second']) && !empty($variables['page']['bottom_third']) && !empty($variables['page']['bottom_forth'])) {
+    $variables['bottom_class'] = 'pure-u-md-6-24';
+  }
+  else if (!empty($variables['page']['bottom_first']) && !empty($variables['page']['bottom_second']) && !empty($variables['page']['bottom_third'])) {
+    $variables['bottom_class'] = 'pure-u-md-8-24';
+  }
+  else if((!empty($variables['page']['bottom_first']) && !empty($variables['page']['bottom_second'])) or (!empty($variables['page']['bottom_first']) && !empty($variables['page']['bottom_third'])) or (!empty($variables['page']['bottom_third']) && !empty($variables['page']['bottom_second']))) {
+    $variables['bottom_class'] = 'pure-u-md-12-24';
+  }
+  else {
+    $variables['bottom_class'] = 'pure-u-md-24-24';
+  }
+
+  // Add responsive class
+  if (!empty($variables['page']['midwidget_first']) && !empty($variables['page']['midwidget_second']) && !empty($variables['page']['midwidget_third']) && !empty($variables['page']['midwidget_forth'])) {
+    $variables['midwidget_class'] = 'pure-u-md-6-24';
+  }
+  else if (!empty($variables['page']['midwidget_first']) && !empty($variables['page']['midwidget_second']) && !empty($variables['page']['midwidget_third'])) {
+    $variables['midwidget_class'] = 'pure-u-md-8-24';
+  }
+  else if((!empty($variables['page']['midwidget_first']) && !empty($variables['page']['midwidget_second'])) or (!empty($variables['page']['midwidget_first']) && !empty($variables['page']['midwidget_third'])) or (!empty($variables['page']['midwidget_third']) && !empty($variables['page']['midwidget_second']))) {
+    $variables['midwidget_class'] = 'pure-u-md-12-24';
+  }
+  else {
+    $variables['midwidget_class'] = 'pure-u-md-24-24';
+  }
+
+  // Add responsive class
+  if (!empty($variables['page']['updates_first']) && !empty($variables['page']['updates_second']) && !empty($variables['page']['updates_third']) && !empty($variables['page']['updates_forth'])) {
+    $variables['updates_class'] = 'pure-u-md-6-24';
+  }
+  else if (!empty($variables['page']['updates_first']) && !empty($variables['page']['updates_second']) && !empty($variables['page']['updates_third'])) {
+    $variables['updates_class'] = 'pure-u-md-8-24';
+  }
+  else if((!empty($variables['page']['updates_first']) && !empty($variables['page']['updates_second'])) or (!empty($variables['page']['updates_first']) && !empty($variables['page']['updates_third'])) or (!empty($variables['page']['updates_third']) && !empty($variables['page']['updates_second']))) {
+    $variables['updates_class'] = 'pure-u-md-12-24';
+  }
+  else {
+    $variables['updates_class'] = 'pure-u-md-24-24';
+  }
+
+  // Add responsive class
+  if (!empty($variables['page']['features_first']) && !empty($variables['page']['features_second']) && !empty($variables['page']['features_third'])) {
+    $variables['features_class'] = 'pure-u-md-8-24';
+    $variables['features_first_class'] = 'pure-u-md-8-24';
+  }
+  elseif((!empty($variables['page']['features_first']) && !empty($variables['page']['features_second'])) or (!empty($variables['page']['features_first']) && !empty($variables['page']['features_third'])) or (!empty($variables['page']['features_third']) && !empty($variables['page']['features_second']))) {
+    $variables['features_class'] = 'pure-u-md-12-24';
+    $variables['features_first_class'] = 'pure-u-md-12-24';
+  }
+  else {
+    $variables['features_class'] = 'pure-u-md-24-24';
+  }
+
+  // Add responsive class.
+  if (!empty($variables['page']['footer_first']) && !empty($variables['page']['footer_second']) && !empty($variables['page']['footer_third'])) {
+    $variables['footer_class'] = 'pure-u-md-8-24';
+  }
+  elseif((!empty($variables['page']['footer_first']) && !empty($variables['page']['footer_second'])) or (!empty($variables['page']['footer_first']) && !empty($variables['page']['footer_third'])) or (!empty($variables['page']['footer_third']) && !empty($variables['page']['footer_second']))) {
+    $variables['footer_class'] = 'pure-u-md-12-24';
+  }
+  else {
+    $variables['footer_class'] = 'pure-u-md-24-24';
+  }
+
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['contentlayout'] = 'pure-u-md-12-24';
+    $variables['sidebarfirst'] = 'pure-u-md-6-24';
+    $variables['sidebarsecond'] = 'pure-u-md-6-24';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['contentlayout'] = 'pure-u-md-17-24 ';
+    $variables['sidebarfirst'] = 'pure-u-md-7-24';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['contentlayout'] = 'pure-u-md-17-24';
+    $variables['sidebarsecond'] = 'pure-u-md-7-24';
+  }
+  else {
+    $variables['contentlayout'] = 'pure-u-md-24-24';
+  }
+  
+}
+
+/**
+ * Layout des lignes : pleine largeur
+ */
+//function d8base_preprocess_layout(&$variables) {
+// // dpm($variables['attributes']);
+//    $variables['attributes']['class'][] = 'pure-u-24-24';
+//}
+
+
+/**
+ * Layout des lignes : ajouter les classes
+ */
+function d8base_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  // Creating variables for the template.
+  if('node' == $variables['entity_type'] && 'field_lignes' == $variables['field_name']) {
+        foreach($variables['items'] as $k => $v) {
+            $paragraph = $v['content']['#paragraph'];
+            $classes = '';
+            if($paragraph->hasField('field_classe_css')) {
+                $classes = $paragraph->field_classe_css->value;
+            }
+            if($classes) {
+              $variables['items'][$k]['classes'] = $classes;
+            }
+        }
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ * Class par path
+ */
+function d8base_preprocess_html(&$variables) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    $path_alias = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+    $path_tab = explode('/',$path_alias);
+    $niveau = count($path_tab) - 1;
+    $variables['attributes']['class'][] = 'rootpath-' . \Drupal\Component\Utility\Html::cleanCssIdentifier($path_tab[1]);
+    $variables['attributes']['class'][] = \Drupal\Component\Utility\Html::cleanCssIdentifier('niveau-' . $niveau);
+  }
+}
+

@@ -1,0 +1,19 @@
+uuid: f08fc024-b22f-4bff-90a6-535cb404871c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_classe_css
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.field_classe_css
+field_name: field_classe_css
+entity_type: paragraph
+bundle: image
+label: 'Classe CSS'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

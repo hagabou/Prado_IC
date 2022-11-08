@@ -1,0 +1,106 @@
+name: Tadaa D8Base
+type: theme
+description: 'Tadaa - Thème de Base utilisant Pure CSS'
+package: core
+core: 8.x
+
+base theme: freelancer_zymphonies_theme
+
+# on remplace celles du thème parent avec les notres (couleurs modifiées)
+libraries-override:
+  # Remove an entire library.
+  freelancer_zymphonies_theme/bootstrap: false
+  freelancer_zymphonies_theme/global-components: false
+  # freelancer_zymphonies_theme/flexslider: false
+  # freelancer_zymphonies_theme/fontawesome: false
+  freelancer_zymphonies_theme/smartmenus: false
+  freelancer_zymphonies_theme/owl: false
+  
+  # stable/clearfix.module: false
+  # Replace an asset with another.
+#  freelancer_zymphonies_theme/global-components:
+#    css:
+#      theme:
+#        css/global.css: css/sub/global.css
+#        css/media.css: css/sub/media.css
+        
+# Libraries
+libraries:
+  - d8base/pure-css
+  - d8base/global-styling
+  
+ckeditor_stylesheets:
+  - css/styles.css
+  
+# Regions
+regions:
+
+  # Top bar
+#  top_menu: 'Menu du haut'
+#  email: 'Secondary Top left'
+
+  # Header
+  header: 'Header'
+  primary_menu: 'Menu principal'
+  search: 'Recherche'
+  
+  # ESPACE PRO
+  espace_pro_logo: 'Espace pro logo'
+  espace_pro_connexion: 'Espace pro connexion'
+
+  # Top widgets
+  topwidget_title: 'Top widget title'
+  topwidget_first: 'Top widget first'
+  topwidget_second: 'Top widget second'
+  topwidget_third: 'Top widget third' 
+
+  # Top message
+#  topmessage: 'Top Message'
+
+  # Global region
+  highlighted: 'Highlighted' 
+  page_title: 'Page title'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  sidebar_first: 'Left sidebar'
+  sidebar_second: 'Right sidebar'
+
+  # Features widgets
+#  features_title: 'Features title'
+#  features_first: 'Features widget first'
+#   features_second: 'Features widget second'
+#   features_third: 'Features widget third'
+
+  # Updates widgets
+#   updates_title: 'Updates title'
+#   updates_first: 'Updates widget first'
+#   updates_second: 'Updates widget second'
+#   updates_third: 'Updates widget third'
+#   updates_forth: 'Updates widget forth'
+
+  # Middle widgets
+#   midwidget_title: 'Middle widget title'
+#  midwidget_first: 'Middle widget first'
+#  midwidget_second: 'Middle widget second'
+#  midwidget_third: 'Middle widget third'
+#  midwidget_forth: 'Middle widget forth'
+  
+# Clients widgets
+#  clients_title: 'Clients title'
+#  clients: 'Clients'
+
+  # Bottom widgets
+#  bottom_title: 'Bottom title'
+#  bottom_first: 'Bottom widget first'
+#  bottom_second: 'Bottom widget second'
+#  bottom_third: 'Bottom widget third'
+#  bottom_forth: 'Bottom widget forth'
+
+  # Footer widgets
+  footer_title: 'Footer title'
+  footer_first: 'Footer widget first'
+  footer_second: 'Footer widget second'
+  footer_third: 'Footer widget third'
+
+  # Auto hidden
+  auto_hidden_block: 'Auto hidden blocks'

@@ -1,0 +1,21 @@
+uuid: ec6abce1-2e72-404c-a313-6feb9c855fe2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_texte_groupes_virtuels
+    - taxonomy.vocabulary.departements
+  module:
+    - text
+id: taxonomy_term.departements.field_texte_groupes_virtuels
+field_name: field_texte_groupes_virtuels
+entity_type: taxonomy_term
+bundle: departements
+label: 'Texte - Groupes virtuels'
+description: 'Si rempli, affiche un texte en colonne de droite sur l''élément qui décrit les groupes présents sur un département.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

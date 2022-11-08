@@ -1,0 +1,19 @@
+features:
+  node_user_picture: 0
+  comment_user_picture: 0
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 0
+  path: themes/custom/tadaa_cai_theme/images/Logo-CAI-typoblanche.svg
+favicon:
+  use_default: 0
+  path: ''
+browser_sync:
+  enabled: 0
+  host: ''
+  port: ''
+ie_enabled: 0
+ie_enabled_versions:
+  ie8: 0
+  ie9: 0

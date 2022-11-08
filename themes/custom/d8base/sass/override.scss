@@ -1,0 +1,23 @@
+/*
+    Created on : 17 oct. 2019, 12:53:18
+    Updated : 04 février 2021
+    Author     : Camille - Tadaa
+    Description : utiliser seulement Pure CSS, supprimer Bourbon et Bootstrap
+*/
+// @import "compass/reset";
+// @import "compass/CSS3";
+/*@import "sub/node_modules/bourbon/core/bourbon";*/
+/*@import "sub/mixins-compass";
+@import "../../../contrib/freelancer_zymphonies_theme/sass/variables-and-mixins";*/
+/*@import "../../../contrib/freelancer_zymphonies_theme/sass/base";
+@import "../../../contrib/freelancer_zymphonies_theme/sass/typhography";
+@import "../../../contrib/freelancer_zymphonies_theme/sass/global-styles";
+@import "../../../contrib/freelancer_zymphonies_theme/sass/home.scss";
+@import "variables-mixins";*/
+// On remplace header car des couleurs en dur ... n'importe quoi
+@import "sub/header";
+@import "sub/menu";
+@import "../../../contrib/freelancer_zymphonies_theme/sass/slider";
+/*@import "../../../contrib/freelancer_zymphonies_theme/sass/menu";*/
+@import "../../../contrib/freelancer_zymphonies_theme/sass/demo";
+@import "../../../contrib/freelancer_zymphonies_theme/sass/pages";

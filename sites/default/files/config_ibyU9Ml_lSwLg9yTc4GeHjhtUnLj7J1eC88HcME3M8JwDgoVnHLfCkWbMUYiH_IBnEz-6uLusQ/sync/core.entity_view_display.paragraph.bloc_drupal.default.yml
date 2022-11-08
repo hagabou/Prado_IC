@@ -1,0 +1,24 @@
+uuid: 48971e74-3d81-435d-ba05-485082a21add
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_drupal.field_reference_au_bloc
+    - paragraphs.paragraphs_type.bloc_drupal
+_core:
+  default_config_hash: Uw_op-x74G1Cob4t62eZgAdzey3p6jpHyJ5tIa5wuJE
+id: paragraph.bloc_drupal.default
+targetEntityType: paragraph
+bundle: bloc_drupal
+mode: default
+content:
+  field_reference_au_bloc:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

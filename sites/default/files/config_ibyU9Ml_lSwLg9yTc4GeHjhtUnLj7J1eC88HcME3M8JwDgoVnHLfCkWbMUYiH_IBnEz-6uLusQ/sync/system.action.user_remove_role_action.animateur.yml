@@ -1,0 +1,14 @@
+uuid: 6bff7cf2-158c-4165-a8d9-97b23478e227
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.animateur
+  module:
+    - user
+id: user_remove_role_action.animateur
+label: 'Enlever le rôle animateur des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: animateur

@@ -1,0 +1,40 @@
+uuid: 734674ee-4b77-40d6-b585-28b5ce69ed9c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.actualites
+  module:
+    - system
+    - user
+    - views
+  theme:
+    - d8base
+id: views_block__actualites_block_1
+theme: d8base
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:actualites-block_1'
+settings:
+  id: 'views_block:actualites-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: '2'
+visibility:
+  request_path:
+    id: request_path
+    pages: /espace-pro
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      editeur: editeur
+      abonne: abonne
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

@@ -1,0 +1,30 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: general
+label: Général
+description: ''
+attributes:
+  target:
+    id: target
+    weight: 0
+    settings:
+      widget_type: simple_checkbox
+  id:
+    id: id
+    weight: 0
+    settings: {  }
+matchers:
+  525d4b93-f39e-4700-9571-59bbe4f18c8d:
+    uuid: 525d4b93-f39e-4700-9571-59bbe4f18c8d
+    id: 'entity:node'
+    weight: 0
+    settings:
+      result_description: '[node:title] ([node:nid])'
+      bundles:
+        article: article
+        page: page
+      group_by_bundle: true
+      include_unpublished: true

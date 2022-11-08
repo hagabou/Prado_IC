@@ -1,0 +1,23 @@
+uuid: fb434056-1f6f-46d9-a1ad-1a804058d807
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_corps_de_texte
+    - paragraphs.paragraphs_type.ligne
+  module:
+    - text
+_core:
+  default_config_hash: rsS5sxcpfKxYf_dJ3IC0fqke9PBaC6_iCtjhy754PoQ
+id: paragraph.ligne.field_corps_de_texte
+field_name: field_corps_de_texte
+entity_type: paragraph
+bundle: ligne
+label: 'Corps de texte'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

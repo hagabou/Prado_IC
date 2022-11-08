@@ -1,0 +1,30 @@
+uuid: 4384ab77-1766-4591-8624-7e0d8c1e827c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_etat
+field_name: field_etat
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: encours
+      label: 'En cours'
+    -
+      value: terminé
+      label: Complet
+    -
+      value: masqué
+      label: Masqué
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

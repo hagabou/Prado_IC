@@ -1,0 +1,22 @@
+uuid: 2fd93008-d051-4f3e-bebe-5263f8af6089
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tadaa_cai_theme
+_core:
+  default_config_hash: 6sWRILy645HXPu-BZjPQ9gQb-3D9hFO7mHXuGY0p3hE
+id: tadaa_cai_theme_messages
+theme: tadaa_cai_theme
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,24 @@
+uuid: b0c21bfa-e2b2-44b6-870d-aff6f7fe7f3c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.slider
+  module:
+    - views
+  theme:
+    - d8base
+id: views_block__slider_block_1
+theme: d8base
+region: auto_hidden_block
+weight: 0
+provider: null
+plugin: 'views_block:slider-block_1'
+settings:
+  id: 'views_block:slider-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

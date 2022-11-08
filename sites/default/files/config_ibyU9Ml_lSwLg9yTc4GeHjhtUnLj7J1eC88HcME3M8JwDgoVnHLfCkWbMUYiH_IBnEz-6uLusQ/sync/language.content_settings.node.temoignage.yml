@@ -1,0 +1,11 @@
+uuid: eb724f58-66a8-4ec8-9e78-31dd20cc14f2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.temoignage
+id: node.temoignage
+target_entity_type_id: node
+target_bundle: temoignage
+default_langcode: site_default
+language_alterable: false

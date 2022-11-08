@@ -1,0 +1,18 @@
+uuid: 1d5c76e8-19b1-4cf9-a002-cda0c7658f6d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.ressources
+id: node.ressources.title
+field_name: title
+entity_type: node
+bundle: ressources
+label: Titre
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

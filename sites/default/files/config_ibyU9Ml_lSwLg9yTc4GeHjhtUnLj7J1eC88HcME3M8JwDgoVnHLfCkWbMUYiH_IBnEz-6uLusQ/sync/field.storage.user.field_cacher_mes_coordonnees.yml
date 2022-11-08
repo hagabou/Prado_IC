@@ -1,0 +1,18 @@
+uuid: 237663e4-04b9-4944-a719-d854ada5b89a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_cacher_mes_coordonnees
+field_name: field_cacher_mes_coordonnees
+entity_type: user
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

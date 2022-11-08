@@ -1,0 +1,11 @@
+uuid: 51c1c944-72ea-44bd-a39d-7db40c6216df
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.departements
+id: taxonomy_term.departements
+target_entity_type_id: taxonomy_term
+target_bundle: departements
+default_langcode: site_default
+language_alterable: false

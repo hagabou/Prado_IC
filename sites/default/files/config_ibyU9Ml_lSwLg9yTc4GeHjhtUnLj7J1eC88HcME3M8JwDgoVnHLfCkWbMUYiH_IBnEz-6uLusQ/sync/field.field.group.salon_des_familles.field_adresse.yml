@@ -1,0 +1,40 @@
+uuid: 9db77e9d-36e1-472a-b60e-6ff165b1e8a7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_adresse
+    - group.type.salon_des_familles
+  module:
+    - address
+id: group.salon_des_familles.field_adresse
+field_name: field_adresse
+entity_type: group
+bundle: salon_des_familles
+label: Adresse
+description: 'Si ce groupe est rattaché à une adresse précise (acteur en lien etc ..).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    FR: FR
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

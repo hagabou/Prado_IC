@@ -1,0 +1,181 @@
+/**
+ COULEURS
+ **/
+$couleurBase: #672371; //violet CAI
+$couleur_secondaire: #E63E4B; // rouge CAI 
+$couleur_tertaire: #FDD300; // jaune CAI
+
+$couleurBase_dark: #581d60; //violet CAI DARK
+$couleur_secondaire_dark: #c33540; // rouge CAI DARK
+$couleur_tertaire_dark: #d6b406; // jaune CAI d6b406
+
+$couleurGrisClair: #ececec;
+$couleurGrisFonce: #656B6F;
+
+$couleurBaseFont: #656B6F; // presque noir
+
+$couleurFondPastel: #bac586; // vert clair gris
+$couleurBlanc: #fff;
+$couleurNoir: #000;
+$couleurJaune: #FDD300; // -> jaune CAI
+$couleurOrange: #E63E4B; // -> rouge CAI 
+$couleurVert: #672371; // -> violet CAI
+
+
+
+
+// FONTS
+$fontFamily: 'Raleway', sans-serif;
+$titleFontFamily: 'Raleway', sans-serif;
+$baseFontSize: 14px;
+$baseFontColor: $couleurBaseFont;
+
+$font2:'Dancing Script', sans-serif;
+
+$fontawesome:'Font Awesome 5 Free';
+
+$linkColor: $couleurBase;
+$linkColorHover: $couleur_secondaire;
+
+$bodyBGColor: $couleurBlanc;
+
+// MENU
+$desktopMenuColor: $couleurBlanc;
+$desktopMenuHover: $couleur_secondaire;
+$desktopMenuDropDownBG: #ce3131;
+$desktopMenuDropDownText: #fff;
+$desktopMenuDropDownHover: #ffa6a5;
+
+// MENU MOBILE
+$mobileMenuBg: rgba(0, 0, 0, 0.80);
+$mobileMenuColor: #fff;
+$mobileMenuHover: #fff;
+$mobileMenuDropDownBG: '';
+$mobileMenuDropDownText: '';
+$mobileMenuDropDownHover: '';
+
+// BOUTONS
+$btnpadding:.375rem .75rem;
+$btnraduis:1rem;
+
+// LAYOUT
+/*$contentpadding:.5rem 15rem;*/
+$largeurmaxcontent:1400px;
+
+$paddingcontent_large: 0 10em;
+$paddingcontentrespond_below_md: 0 5em;
+$paddingcontentrespond_below_sm: 0;
+
+// A map of breakpoints.
+/*$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  sm2: 950px,
+  md: 992px,
+  lg: 1200px
+);*/
+
+// PURE CSS DEFAULT GRID + ajout ^2
+$breakpoints: (
+  sm: 35.5em, //>569px
+  md: 48em,  //>768px
+  lg: 64em,  //>1024px
+  xl: 80em,  //>1280px
+  xl2: 87.5em,  //>1400px
+);
+
+// Mixin
+
+
+// Responsive
+@mixin respond-below($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+
+  // If the breakpoint doesn't exist in the map.
+  } @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// Respond above.
+@mixin respond-above($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+
+  // If the breakpoint doesn't exist in the map.
+  } @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+//MIXIN CAI
+$bgbarrejaune: url("/themes/custom/d8base/images/barre-jaune.svg");
+$bgbarreviolette: url("/themes/custom/d8base/images/barre-violette.svg");
+$bgbarrerouge: url("/themes/custom/d8base/images/barre-rouge.svg");
+$bgbarreblanche: url("/themes/custom/d8base/images/barre-blanche.svg");
+
+@mixin soulignerbarre($bgimgcouleurbarre: $bgbarrejaune){
+    content:"";
+    display: block;
+    clear: both;
+    width:100%;
+    max-width:460px;
+    height:12px;
+    background-image:$bgimgcouleurbarre;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+@mixin cadrebarre(){
+    content:"";
+    display: block;
+    clear: both;
+    width:12px;
+    height:460px;
+    background-image:url("/themes/custom/d8base/images/barre-verticale-jaune.svg");
+    background-repeat: no-repeat;
+    margin: auto;
+    margin-top: 5px;
+}
+
+$bgcochejaune: url("/themes/custom/d8base/images/coche-jaune.svg");
+$bgcocheviolette: url("/themes/custom/d8base/images/coche-violette.svg");
+$bgcocherouge: url("/themes/custom/d8base/images/coche-rouge.svg");
+
+@mixin cochedebutligne($bgimgcouleurcoche: $bgcochejaune){
+    content:"";
+    display: inline-block;
+    width:20px;
+    height:34px;
+    background-image: $bgimgcouleurcoche;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+
+@mixin shadowlight(){
+    -webkit-box-shadow: 0 0 3px 1px rgba(0,0,0,0.3);
+    box-shadow: 0 0 3px 1px rgba(0,0,0,0.3);
+}

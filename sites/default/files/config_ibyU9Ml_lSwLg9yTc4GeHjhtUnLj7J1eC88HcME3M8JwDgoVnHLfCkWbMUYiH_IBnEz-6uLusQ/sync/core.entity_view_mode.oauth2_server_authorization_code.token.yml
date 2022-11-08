@@ -1,0 +1,10 @@
+uuid: 5760bf6d-a005-4a88-a79a-b0bfa1b83966
+langcode: fr
+status: true
+dependencies:
+  module:
+    - oauth2_server
+id: oauth2_server_authorization_code.token
+label: 'Jeton (token)'
+targetEntityType: oauth2_server_authorization_code
+cache: true

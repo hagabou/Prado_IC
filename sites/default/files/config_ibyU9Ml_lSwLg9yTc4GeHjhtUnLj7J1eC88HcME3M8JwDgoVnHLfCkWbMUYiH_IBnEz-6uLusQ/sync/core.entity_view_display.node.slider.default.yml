@@ -1,0 +1,81 @@
+uuid: 4eadc8d3-5ac7-428b-96da-5b6fec223f18
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.slider.field_accroche
+    - field.field.node.slider.field_lien
+    - field.field.node.slider.field_medaillon
+    - field.field.node.slider.field_public
+    - field.field.node.slider.field_titre_ligne_1
+    - field.field.node.slider.field_titre_ligne_2
+    - node.type.slider
+  module:
+    - image
+    - link
+    - options
+    - user
+id: node.slider.default
+targetEntityType: node
+bundle: slider
+mode: default
+content:
+  field_accroche:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_lien:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_medaillon:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_public:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_titre_ligne_1:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_titre_ligne_2:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

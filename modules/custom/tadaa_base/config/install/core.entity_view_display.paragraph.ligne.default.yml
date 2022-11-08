@@ -1,0 +1,27 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ligne.field_corps_de_texte
+    - paragraphs.paragraphs_type.ligne
+  module:
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.ligne.default
+targetEntityType: paragraph
+bundle: ligne
+mode: default
+content:
+  field_corps_de_texte:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  layout_builder__layout: true

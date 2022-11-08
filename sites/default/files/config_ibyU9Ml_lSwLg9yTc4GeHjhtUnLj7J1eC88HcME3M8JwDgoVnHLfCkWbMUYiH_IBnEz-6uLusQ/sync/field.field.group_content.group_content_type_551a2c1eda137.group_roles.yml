@@ -1,0 +1,22 @@
+uuid: 7d0d41db-179d-45ea-9b6b-a247587c2ff4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.group_roles
+    - group.content_type.group_content_type_551a2c1eda137
+id: group_content.group_content_type_551a2c1eda137.group_roles
+field_name: group_roles
+entity_type: group_content
+bundle: group_content_type_551a2c1eda137
+label: Roles
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'group_type:group_role'
+  handler_settings:
+    group_type_id: salon_des_familles
+field_type: entity_reference

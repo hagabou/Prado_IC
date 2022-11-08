@@ -1,0 +1,22 @@
+uuid: beb56dd3-e6ec-4d73-9122-282f298c08b3
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_force
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - ressources-espace-pro
+    parent: 'ressources-espace-pro:'
+  menu_force:
+    menu_force: 1
+    menu_force_parent: 0
+name: Ressources
+type: ressources
+description: 'Pages de documentation autour du projet accessible depuis l''Espace Pro.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

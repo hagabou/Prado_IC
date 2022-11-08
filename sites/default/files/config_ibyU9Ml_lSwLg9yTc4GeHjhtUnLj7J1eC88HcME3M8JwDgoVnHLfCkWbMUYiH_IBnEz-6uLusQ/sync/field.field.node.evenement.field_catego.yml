@@ -1,0 +1,29 @@
+uuid: e8496348-1364-41b7-903b-dfc0d20bc539
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_catego
+    - node.type.evenement
+    - taxonomy.vocabulary.type_evenement
+id: node.evenement.field_catego
+field_name: field_catego
+entity_type: node
+bundle: evenement
+label: Catégorie
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      type_evenement: type_evenement
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

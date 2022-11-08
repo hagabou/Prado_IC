@@ -1,0 +1,21 @@
+uuid: d3c3fc8d-f7cd-4eb6-ad67-3c0893145f67
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_texte_groupes_familles
+    - taxonomy.vocabulary.departements
+  module:
+    - text
+id: taxonomy_term.departements.field_texte_groupes_familles
+field_name: field_texte_groupes_familles
+entity_type: taxonomy_term
+bundle: departements
+label: 'Texte - Groupes familles'
+description: 'Si rempli, présente un texte en colonne de gauche sur l''élément qui décrit le département sur la carte associée.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,23 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_colore.field_corps_de_texte
+    - field.field.paragraph.bloc_colore.field_couleur
+    - paragraphs.paragraphs_type.bloc_colore
+  module:
+    - text
+id: paragraph.bloc_colore.default
+targetEntityType: paragraph
+bundle: bloc_colore
+mode: default
+content:
+  field_corps_de_texte:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_couleur: true

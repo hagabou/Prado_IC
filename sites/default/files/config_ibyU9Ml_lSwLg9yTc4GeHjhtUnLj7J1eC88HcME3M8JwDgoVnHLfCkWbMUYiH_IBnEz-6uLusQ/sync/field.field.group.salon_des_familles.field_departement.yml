@@ -1,0 +1,29 @@
+uuid: 7a695823-b0a4-4118-8d30-5df5c3a1e2c4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_departement
+    - group.type.salon_des_familles
+    - taxonomy.vocabulary.departements
+id: group.salon_des_familles.field_departement
+field_name: field_departement
+entity_type: group
+bundle: salon_des_familles
+label: Département
+description: 'Si vide : sera affiché sur TOUS les départements.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      departements: departements
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,46 @@
+uuid: 56975fde-d1c1-4213-8f92-77b7dfba1b48
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_adresse
+    - field.field.user.user.field_cacher_mes_coordonnees
+    - field.field.user.user.field_dates_abonnement
+    - field.field.user.user.field_dates_fin_abonnement
+    - field.field.user.user.field_departement
+    - field.field.user.user.field_fonction
+    - field.field.user.user.field_nom
+    - field.field.user.user.field_prenom
+    - field.field.user.user.field_structure
+    - field.field.user.user.field_telephone
+    - field.field.user.user.user_picture
+  module:
+    - user
+_core:
+  default_config_hash: '-cLsS3M3JycipXQt9rEb81_HxKneReoGuRh8ijcOPXs'
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  masquerade:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  field_adresse: true
+  field_cacher_mes_coordonnees: true
+  field_dates_abonnement: true
+  field_dates_fin_abonnement: true
+  field_departement: true
+  field_fonction: true
+  field_nom: true
+  field_prenom: true
+  field_structure: true
+  field_telephone: true
+  langcode: true
+  member_for: true
+  user_picture: true

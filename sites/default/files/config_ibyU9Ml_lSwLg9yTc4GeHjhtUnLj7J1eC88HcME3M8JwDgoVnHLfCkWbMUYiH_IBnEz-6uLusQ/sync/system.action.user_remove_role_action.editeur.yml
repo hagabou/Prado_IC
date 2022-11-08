@@ -1,0 +1,14 @@
+uuid: 92a57a1c-3d85-4132-b445-b6c664ed561d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.editeur
+  module:
+    - user
+id: user_remove_role_action.editeur
+label: 'Enlever le rôle Editeur des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: editeur

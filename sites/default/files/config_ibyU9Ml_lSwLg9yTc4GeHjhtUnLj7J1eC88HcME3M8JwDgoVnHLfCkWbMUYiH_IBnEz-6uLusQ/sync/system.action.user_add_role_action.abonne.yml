@@ -1,0 +1,14 @@
+uuid: b0604c45-30f2-430e-9e21-16cc4fb0bee4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.abonne
+  module:
+    - user
+id: user_add_role_action.abonne
+label: 'Ajouter le rôle Abonné aux utilisateurs sélectionnés'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: abonne

@@ -1,0 +1,38 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.erl_section.field_classe_css
+    - field.field.paragraph.erl_section.field_title
+    - paragraphs.paragraphs_type.erl_section
+  enforced:
+    module:
+      - erl_paragraphs
+_core:
+  default_config_hash: FMYPWrrzqLm7rg0nO3nwSQ8nJQtFLTmQV4LNguzJCBM
+id: paragraph.erl_section.default
+targetEntityType: paragraph
+bundle: erl_section
+mode: default
+content:
+  field_classe_css:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  uid: true

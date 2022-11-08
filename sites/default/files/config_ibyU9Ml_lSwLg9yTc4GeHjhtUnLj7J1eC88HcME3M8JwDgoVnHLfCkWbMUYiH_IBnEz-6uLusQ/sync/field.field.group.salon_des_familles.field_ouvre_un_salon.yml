@@ -1,0 +1,23 @@
+uuid: a6440e7c-7647-4f3d-bb80-1156ca65737f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_ouvre_un_salon
+    - group.type.salon_des_familles
+id: group.salon_des_familles.field_ouvre_un_salon
+field_name: field_ouvre_un_salon
+entity_type: group
+bundle: salon_des_familles
+label: 'Ouvre un "Salon des familles"'
+description: 'Si coché, alors un Groupe "Salon des familles" sera ouvert sur l''espace de t''chat de CAI. Une fois coché, la case ne peut plus être modifiée.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

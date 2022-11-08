@@ -1,0 +1,15 @@
+pure-css:
+  version: 2.0.5
+  css:
+    component:
+      css/vendor/purecss.css: { minified: true }
+      css/vendor/grids-responsive-min.css: { minified: true }
+global-styling:
+  js:
+    js/base.js: {}
+  dependencies:
+#    - freelancer_zymphonies_theme/global-components
+    - core/jquery
+  css:
+    component:
+      css/styles.css: {}

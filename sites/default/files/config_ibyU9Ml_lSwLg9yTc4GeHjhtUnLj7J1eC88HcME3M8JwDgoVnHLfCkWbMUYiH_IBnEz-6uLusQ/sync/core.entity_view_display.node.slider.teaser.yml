@@ -1,0 +1,71 @@
+uuid: d5bc014e-7815-474a-9d53-0dd4060ff373
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.slider.field_accroche
+    - field.field.node.slider.field_lien
+    - field.field.node.slider.field_medaillon
+    - field.field.node.slider.field_public
+    - field.field.node.slider.field_titre_ligne_1
+    - field.field.node.slider.field_titre_ligne_2
+    - node.type.slider
+  module:
+    - image
+    - link
+    - user
+id: node.slider.teaser
+targetEntityType: node
+bundle: slider
+mode: teaser
+content:
+  field_accroche:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_lien:
+    type: link
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_medaillon:
+    type: image
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_titre_ligne_1:
+    type: string
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_titre_ligne_2:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_public: true
+  langcode: true
+  links: true

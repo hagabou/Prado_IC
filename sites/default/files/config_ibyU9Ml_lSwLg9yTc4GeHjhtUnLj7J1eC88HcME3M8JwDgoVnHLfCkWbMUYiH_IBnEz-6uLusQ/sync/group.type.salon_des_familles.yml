@@ -1,0 +1,10 @@
+uuid: a0d889b5-11ee-4860-a7f7-5fd6bca93163
+langcode: fr
+status: true
+dependencies: {  }
+id: salon_des_familles
+label: 'Groupe Salon des familles'
+description: 'Pour les groupes adossés au <em>Salon des Familles du Prado</em>.'
+creator_membership: false
+creator_wizard: false
+creator_roles: {  }

@@ -1,0 +1,30 @@
+uuid: fda16d1b-0269-4853-91ac-f3c6d39c4701
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.slider
+  module:
+    - system
+    - views
+  theme:
+    - d8base
+id: views_block__slider_block_1_2
+theme: d8base
+region: topwidget_first
+weight: -11
+provider: null
+plugin: 'views_block:slider-block_1'
+settings:
+  id: 'views_block:slider-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

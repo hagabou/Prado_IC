@@ -1,0 +1,16 @@
+uuid: 03e4ab04-03cb-4cb8-aaa3-4cc60ca00697
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+id: salon_des_familles-organisateur
+label: Organisateur
+weight: 21
+internal: false
+audience: member
+group_type: salon_des_familles
+permissions_ui: true
+permissions:
+  - 'administer members'
+  - 'view group'

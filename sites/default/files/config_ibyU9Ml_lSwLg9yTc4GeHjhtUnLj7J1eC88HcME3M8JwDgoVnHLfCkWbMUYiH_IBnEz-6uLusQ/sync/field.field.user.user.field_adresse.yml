@@ -1,0 +1,38 @@
+uuid: cb487002-046f-4f1b-bb3f-d83062ebcaea
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_adresse
+  module:
+    - address
+    - user
+id: user.user.field_adresse
+field_name: field_adresse
+entity_type: user
+bundle: user
+label: Adresse
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    FR: FR
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    addressLine1:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+  fields: {  }
+field_type: address

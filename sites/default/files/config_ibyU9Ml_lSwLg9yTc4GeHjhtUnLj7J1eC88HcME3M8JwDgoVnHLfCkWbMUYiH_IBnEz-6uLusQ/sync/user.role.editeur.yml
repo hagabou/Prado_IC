@@ -1,0 +1,52 @@
+uuid: 01b8e023-0c9d-4e35-acbc-74dffa506d84
+langcode: fr
+status: true
+dependencies: {  }
+id: editeur
+label: Editeur
+weight: 4
+is_admin: null
+permissions:
+  - 'acces espace pro'
+  - 'access content overview'
+  - 'access group overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'access webform submission user'
+  - 'administer account settings'
+  - 'administer filters'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer permissions'
+  - 'administer users'
+  - 'bypass node access'
+  - 'create page content'
+  - 'create paragraph library item'
+  - 'create salon_des_familles group'
+  - 'create slider content'
+  - 'create temoignage content'
+  - 'create url aliases'
+  - 'delete own page content'
+  - 'delete own slider content'
+  - 'delete own temoignage content'
+  - 'edit any page content'
+  - 'edit any slider content'
+  - 'edit any temoignage content'
+  - 'edit own page content'
+  - 'edit own slider content'
+  - 'edit own temoignage content'
+  - 'edit paragraph library item'
+  - 'grant content access'
+  - 'grant own content access'
+  - 'revert page revisions'
+  - 'revert slider revisions'
+  - 'revert temoignage revisions'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view any webform submission'
+  - 'view own unpublished content'
+  - 'view page revisions'
+  - 'view slider revisions'
+  - 'view temoignage revisions'
+  - 'view the administration theme'
+  - 'view unpublished paragraphs'

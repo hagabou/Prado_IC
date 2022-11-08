@@ -1,0 +1,141 @@
+
+//https://purecss.io/layouts/tucked-menu-vertical/
+
+.navbar-toggle {
+    cursor: pointer;
+    position: absolute;
+    top: 40px;
+    right: 1em; 
+    background: none;
+    border: 0;
+    padding: 1em 0 1em 1em;
+    color: #fff;
+    font-size: 1.2em;
+    z-index: 10;    
+    display: none;
+}
+
+@include respond-below(md) {
+    .navbar-toggle {
+        display: block;
+    }
+    
+    header#main-header {
+        height: 112px;
+        overflow: hidden;
+        -webkit-transition: height 0.5s;
+        -moz-transition: height 0.5s;
+        -ms-transition: height 0.5s;
+        transition: height 0.5s;
+        background-color: $couleurBase;
+        background-image: none;
+        &:before{
+            background: none;
+        }
+        &.open {
+            height: auto;
+        }
+        .pure-g {
+            align-items: top;
+        }
+        .region-header{
+            #block-d8base-branding{
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+        }
+        
+        #main-menu {
+            ul > li{
+                width: 100%;
+                .pure-menu-children {
+                    display: block;
+                    position: relative;
+                    left: 0;
+                    top: 0;
+                    -webkit-box-shadow:none;
+                    box-shadow: none;
+                }
+            }
+        }
+        .region-primary-menu {
+            padding: 0;
+            background-color: #fff;
+            @include shadowlight();
+        }
+        /*mise en forme main menu*/
+        #main-menu{
+            ul > li{
+                &:nth-child(1), &:nth-child(1) .pure-menu-children li, &:nth-child(4){
+                    border-color: $couleur_secondaire;
+                    a{
+                        color: $couleur_secondaire;
+                    }
+                }
+                &:nth-child(2), &:nth-child(2) .pure-menu-children li, &:nth-child(5){
+                    border-color: $couleurBase;
+                    a{
+                        color: $couleurBase;
+                    }
+                }
+                &:nth-child(3), &:nth-child(3) .pure-menu-children li{
+                    border-color: $couleur_tertaire;
+                    a{
+                        color: $couleur_tertaire;
+                    }
+                }
+                &:nth-child(4), &:nth-child(5){
+                    width: 100%;
+                    a{
+                    }
+                }
+            }
+        }
+    }
+     
+}
+
+footer{
+    /*Ajout pictos des salons*/
+    #main-menu.pure-menu-horizontal ul.pure-menu-list{
+        width: 100%;
+        padding: 0 2em;
+        white-space: initial;
+        > li.pure-menu-item{
+            vertical-align: top;
+            width: 32%;
+            padding: 20px;
+            
+            &:nth-child(4), &:nth-child(5){
+                display: none;
+            }
+            span{
+                display: none;
+            }
+            a{
+                color:#fff;
+                text-decoration: none;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            .pure-menu-children{
+                width: 100%;
+                display: block;
+                position: relative;
+                background-color: transparent;
+                a{
+                    font-weight: normal;
+                text-transform: none;
+                    color:#fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+@include respond-below(md){
+    footer #main-menu.pure-menu-horizontal ul.pure-menu-list > li.pure-menu-item{
+        width: 100%;
+    }
+}

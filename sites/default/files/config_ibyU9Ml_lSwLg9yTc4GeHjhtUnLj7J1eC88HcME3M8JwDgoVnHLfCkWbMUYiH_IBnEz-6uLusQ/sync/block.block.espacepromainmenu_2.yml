@@ -1,0 +1,41 @@
+uuid: 3af24291-4600-40af-8207-1ac616430f60
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:52741396-7ee6-4f96-b222-9c95d7c24701'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - d8base
+id: espacepromainmenu_2
+theme: d8base
+region: content
+weight: -4
+provider: null
+plugin: 'block_content:52741396-7ee6-4f96-b222-9c95d7c24701'
+settings:
+  id: 'block_content:52741396-7ee6-4f96-b222-9c95d7c24701'
+  label: 'Espace pro main menu'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /espace-pro
+    negate: false
+    context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      editeur: editeur
+      abonne: abonne
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

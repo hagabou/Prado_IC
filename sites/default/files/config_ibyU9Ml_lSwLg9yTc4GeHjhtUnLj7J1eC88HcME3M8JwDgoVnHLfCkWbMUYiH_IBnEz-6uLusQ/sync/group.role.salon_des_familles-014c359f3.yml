@@ -1,0 +1,17 @@
+uuid: 5c6a4b35-3f59-4fc1-bd19-18b46be874f8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+  enforced:
+    config:
+      - user.role.editeur
+id: salon_des_familles-014c359f3
+label: Editeur
+weight: 4
+internal: true
+audience: outsider
+group_type: salon_des_familles
+permissions_ui: false
+permissions: {  }

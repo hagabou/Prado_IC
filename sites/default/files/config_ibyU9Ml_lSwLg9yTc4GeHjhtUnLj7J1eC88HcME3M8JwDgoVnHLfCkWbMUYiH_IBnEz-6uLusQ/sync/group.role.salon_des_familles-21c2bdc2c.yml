@@ -1,0 +1,17 @@
+uuid: 8e37e5dd-fbb3-4a18-bd09-e1eec3a48a67
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+  enforced:
+    config:
+      - user.role.animateur
+id: salon_des_familles-21c2bdc2c
+label: Animateur
+weight: 9
+internal: true
+audience: outsider
+group_type: salon_des_familles
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,17 @@
+uuid: 6bf91e8c-76d8-4777-9a42-9f6960712eab
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.salon_des_familles
+  enforced:
+    config:
+      - user.role.administrator
+id: salon_des_familles-a416e6833
+label: Administrateur
+weight: 2
+internal: true
+audience: outsider
+group_type: salon_des_familles
+permissions_ui: false
+permissions: {  }

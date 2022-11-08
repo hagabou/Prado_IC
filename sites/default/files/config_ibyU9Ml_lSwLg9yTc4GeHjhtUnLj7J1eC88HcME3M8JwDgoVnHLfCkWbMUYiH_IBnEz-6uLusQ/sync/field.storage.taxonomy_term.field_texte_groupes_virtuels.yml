@@ -1,0 +1,19 @@
+uuid: def37731-842d-47ea-8217-40949ce14928
+langcode: fr
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - text
+id: taxonomy_term.field_texte_groupes_virtuels
+field_name: field_texte_groupes_virtuels
+entity_type: taxonomy_term
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

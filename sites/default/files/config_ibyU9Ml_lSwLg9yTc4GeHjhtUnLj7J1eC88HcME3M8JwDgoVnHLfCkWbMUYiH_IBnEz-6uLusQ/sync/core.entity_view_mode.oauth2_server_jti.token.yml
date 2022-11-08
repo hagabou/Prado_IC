@@ -1,0 +1,10 @@
+uuid: f000cdf4-e113-491c-b832-f1abe947d9df
+langcode: fr
+status: true
+dependencies:
+  module:
+    - oauth2_server
+id: oauth2_server_jti.token
+label: 'Jeton (token)'
+targetEntityType: oauth2_server_jti
+cache: true

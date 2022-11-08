@@ -1,0 +1,8 @@
+uuid: e304f53e-4555-4aef-a3bc-72782697d6de
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Types d''événements'
+vid: type_evenement
+description: ''
+weight: 0

@@ -1,0 +1,47 @@
+uuid: f902ec2c-7318-4169-a015-09a22c3b2059
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.temoignage.body
+    - field.field.node.temoignage.field_ca
+    - field.field.node.temoignage.field_signature
+    - node.type.temoignage
+  module:
+    - options
+    - text
+    - user
+id: node.temoignage.default
+targetEntityType: node
+bundle: temoignage
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_ca:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_signature:
+    weight: 102
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

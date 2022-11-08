@@ -1,0 +1,15 @@
+uuid: 6773c2a7-acac-4c07-941a-41615aa10f1d
+name: 'Ces années incroyables'
+mail: cai@le-prado.fr
+slogan: 'Être parent, ça s''apprend'
+page:
+  403: ''
+  404: ''
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+langcode: fr
+default_langcode: fr
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+mail_notification: ''

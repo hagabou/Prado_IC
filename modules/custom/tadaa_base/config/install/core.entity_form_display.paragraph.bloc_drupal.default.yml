@@ -1,0 +1,24 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_drupal.field_reference_au_bloc
+    - paragraphs.paragraphs_type.bloc_drupal
+id: paragraph.bloc_drupal.default
+targetEntityType: paragraph
+bundle: bloc_drupal
+mode: default
+content:
+  field_reference_au_bloc:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

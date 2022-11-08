@@ -1,0 +1,22 @@
+uuid: 806b40e2-a346-4484-9d58-a115aac0cfb3
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - d8base
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: d8base_help
+theme: d8base
+region: content
+weight: -11
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

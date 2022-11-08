@@ -1,0 +1,12 @@
+uuid: 6ef1bdda-3da2-445d-85d6-644751d07087
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: k8_Yolrugi6RKzAw2t63yS9BGirBLWgTPl-aeJJvNUs
+id: bloc_colore
+label: 'Bloc coloré'
+icon_uuid: null
+icon_default: null
+description: 'Un bloc coloré (fond violet)'
+behavior_plugins: {  }

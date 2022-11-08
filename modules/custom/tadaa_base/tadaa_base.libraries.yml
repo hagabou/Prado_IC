@@ -1,0 +1,5 @@
+styles:
+  version: 1
+  css:
+    component:
+      css/tadaa-base.css: { minified: true }

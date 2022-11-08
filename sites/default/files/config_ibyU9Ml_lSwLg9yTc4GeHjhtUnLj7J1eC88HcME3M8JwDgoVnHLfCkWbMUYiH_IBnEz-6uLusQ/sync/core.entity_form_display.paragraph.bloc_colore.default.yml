@@ -1,0 +1,34 @@
+uuid: 0f9c4679-f9f6-4c05-b833-1786aa027d32
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_colore.field_corps_de_texte
+    - field.field.paragraph.bloc_colore.field_couleur
+    - paragraphs.paragraphs_type.bloc_colore
+  module:
+    - text
+_core:
+  default_config_hash: 8PH8XOYRJ_I_qxhXasRblPUq-hLq2Glakz8ZvhG8pZs
+id: paragraph.bloc_colore.default
+targetEntityType: paragraph
+bundle: bloc_colore
+mode: default
+content:
+  field_corps_de_texte:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_couleur:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

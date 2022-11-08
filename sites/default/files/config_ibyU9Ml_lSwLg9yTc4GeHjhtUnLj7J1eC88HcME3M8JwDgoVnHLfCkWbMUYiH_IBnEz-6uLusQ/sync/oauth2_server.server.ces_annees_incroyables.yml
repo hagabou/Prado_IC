@@ -1,0 +1,26 @@
+uuid: 6bc3d1bf-d9dc-4e7e-b8fa-6ab159077ec3
+langcode: en
+status: true
+dependencies: {  }
+server_id: ces_annees_incroyables
+name: 'Ces années incroyables'
+settings:
+  enforce_state: true
+  default_scope: ces_annees_incroyables_mattermost
+  allow_implicit: true
+  use_openid_connect: true
+  use_crypto_tokens: false
+  grant_types:
+    authorization_code: authorization_code
+    client_credentials: client_credentials
+    refresh_token: refresh_token
+    password: password
+    'urn:ietf:params:oauth:grant-type:jwt-bearer': '0'
+  always_issue_new_refresh_token: false
+  unset_refresh_token_after_use: true
+  advanced_settings:
+    access_lifetime: 3600
+    id_lifetime: 3600
+    refresh_token_lifetime: 1209600
+    require_exact_redirect_uri: true
+module: null

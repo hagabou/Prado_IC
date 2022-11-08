@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10 févr. 2021, 11:40:59
+    Author     : camille
+*/
+
+
+
+@mixin globalButton($btnbackground: $couleurBase, $btncolor: $couleurBlanc){
+	display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        /*white-space: nowrap;*/
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: $btnpadding;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: $btnraduis;
+        transition: background-color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: $btncolor;
+        background-color: $btnbackground;
+        text-decoration: none;
+        font-weight: bold;
+        cursor:pointer;
+}
+
+@mixin globalButtonHover($btnbackgroundhover: $couleurBase_dark, $btncolorhover: $couleurBlanc){
+    color: $btncolorhover;
+    background-color: $btnbackgroundhover;
+}
+
+.btn {
+    @include globalButton;
+    &:hover{
+      @include globalButtonHover;
+    }
+}
+
+.btn-secondary {
+    @include globalButton($couleur_secondaire);
+    &:hover{
+      @include globalButtonHover($couleur_secondaire_dark);
+    }
+}
+
+.btn-third {
+    @include globalButton($btnbackground: $couleur_tertaire, $btncolor: $couleurBase);
+    &:hover{
+      @include globalButtonHover($couleur_tertaire_dark, $btncolorhover: $couleurBase);
+    }
+}
+
+.rootpath-parents{
+    .btn-secondary{
+        color:#fff;
+        &:hover{
+            color:#fff;
+        }
+    }
+}

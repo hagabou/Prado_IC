@@ -1,0 +1,12 @@
+uuid: 71d9bc3f-ae31-4b65-89d3-bfd2349339d4
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: cCfGF-GM6gMBFHMfclaWoBvCzfVQmagLHkPFEA3zb34
+id: bloc_drupal
+label: 'Bloc Drupal'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
