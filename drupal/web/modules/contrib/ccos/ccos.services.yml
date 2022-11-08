@@ -1,0 +1,4 @@
+services:
+  ccos.clear_cache:
+    class: Drupal\ccos\ClearCacheService
+    arguments: ['@cache_tags.invalidator', '@entity_type.manager', '@request_stack']
